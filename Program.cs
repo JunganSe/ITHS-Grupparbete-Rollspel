@@ -8,6 +8,8 @@ namespace Rollspel
         {
             var cc = new ConsoleCompanion();
             Console.WriteLine("test från johan");
+
+            Console.WriteLine("Litet test av Sabine");
         }
     }
 }
