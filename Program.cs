@@ -7,6 +7,7 @@ namespace Rollspel
         static void Main(string[] args)
         {
             var cc = new ConsoleCompanion();
+            Console.WriteLine("test från johan");
         }
     }
 }
