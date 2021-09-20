@@ -10,6 +10,7 @@ namespace Rollspel
 
             while (true)
             {
+                Player.Move();
                 LevelHandler.Step();
             }
 

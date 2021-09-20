@@ -7,11 +7,14 @@ namespace Rollspel
     public static class LevelMaker
     {
         // Denna metod används ej, är bara en mall.
-        private static void Template(out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        private static void Template(out string name, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             // Kopiera denna metod och döp om till banans namn.
             // Använd detta format för att designa en bana.
             // Se till att antalet tecken per rad stämmer med (LevelHandler.Width), och att antal rader stämmer med (LevelHandler.Height).
+
+            name = "Unnamed";
+
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
             lines[01] = @"║                                                          ║";

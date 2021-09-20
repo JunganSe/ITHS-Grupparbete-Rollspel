@@ -80,12 +80,18 @@ namespace Rollspel
                 }
             }
 
+            // Rita spelaren.
+            Console.SetCursorPosition(anchorX + Player.X, anchorY + Player.Y);
+            Console.Write(Player.Symbol);
+
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)
             {
                 Console.SetCursorPosition(anchorX + item.X, anchorY + item.Y);
                 Console.Write(item.Symbol);
             }
+
+            // Återställ markören.
             Console.SetCursorPosition(0, anchorY + Height);
             Console.Write($"Level: {level.Name}");
         }
