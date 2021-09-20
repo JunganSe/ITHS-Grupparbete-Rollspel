@@ -71,19 +71,29 @@ namespace TopDownTest
             }
         }
 
-        // check if a move is legal before performing it
+        // check if a move can be made
         // arguments to this method should be the potential new position
         // for example for a move up the arguments should be (Column, Row - 1)
         public bool TryToMove(int requestedColumn, int requestedRow)
         {
-            if (CurrentRoom.Map[requestedColumn, requestedRow] == ' ')
+            switch (CurrentRoom.Map[requestedColumn, requestedRow])
             {
-                MakeMovement(requestedColumn, requestedRow);
-                return true;
-            }
-            else
-            {
-                return false;
+                case ' ':
+                    MakeMovement(requestedColumn, requestedRow);
+                    return true;
+                case 'P':
+                    // (Exempel)
+                    // en person som man kan prata med, förflyttningen görs inte men dialog alternativ kommer upp
+                    // Talk()
+                    return false;
+                case 'K':
+                    // (Exempel)
+                    // genomflyttningen görs och spelaren plockar upp saken:
+                    // Inventory.Add("key")
+                    MakeMovement(requestedColumn, requestedRow);
+                    return true;
+                default:
+                    return false;
             }
         }
 
