@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rollspel
 {
@@ -9,13 +10,20 @@ namespace Rollspel
             var cc = new ConsoleCompanion();
 
 
-            // Leo Testar
+            Inventory.PrintInventory(Inventory.GetList());
 
-              Console.WriteLine("test från johan");
+            Potatis potatis = new Potatis("potät");
+            Console.WriteLine($"Du har hittat en {potatis.Name}! Vill du plocka upp {potatis.Name}? Tryck 1 för 'Ja' och 2 för 'Nej");
+            int input = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Litet test av Sabine");
+            Inventory.AddToInventory(input, potatis);
 
-            Console.WriteLine("Funkar!");
+
+
+
+
+
+
         }
     }
 }
