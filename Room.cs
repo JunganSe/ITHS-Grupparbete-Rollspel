@@ -9,50 +9,57 @@ namespace TopDownTest
         // this player that will interact with the Map propertie
         public Player CurrentPlayer { get; set; }
 
-        public Room(int rows, int columns, Player player)
+        public Room(int columns, int rows, int playerColumn, int playerRow)
         {
+            Console.CursorVisible = false;
             // assigns the player to this room
-            CurrentPlayer = player;
+            CurrentPlayer = new Player(playerColumn, playerRow, this);
             // creates the map
-            Map = new char[rows, columns];
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    // create top and bottom edges
-                    if (i == 0 || i == Map.GetLength(0) - 1)
-                    {
-                        Map[i, j] = '=';
-                    }
-                    // create left and right edges
-                    else if (j == 0 || j == Map.GetLength(1) - 1)
-                    {
-                        Map[i, j] = '|';
-                    }
-                    // create empty spaces
-                    else
-                    {
-                        Map[i, j] = ' ';
-                    }
-                }
-            }
+            CreateMap(columns, rows);
         }
 
-        public void Print()
+        public void CreateMap(int columns, int rows)
         {
-            Console.Clear();
-
-            // adds the player to the map
-            Map[CurrentPlayer.Row, CurrentPlayer.Column] = '@';
-            // prints the map
-            for (int i = 0; i < Map.GetLength(0); i++)
+            Map = new char[columns, rows]; 
+            for (int y = 0; y < rows; y++)
             {
-                for (int j = 0; j < Map.GetLength(1); j++)
+                for (int x = 0; x < columns; x++)
                 {
-                    Console.Write(Map[i, j]);
+                    // top and bottom edges
+                    if (y == 0 || y == rows - 1)
+                    {
+                        Map[x, y] = '─';
+                    }
+                    // left and right edges
+                    else if (x == 0 || x == columns - 1)
+                    {
+                        Map[x, y] = '│';
+                    }
+                    // empty space
+                    else
+                    {
+                        Map[x, y] = ' ';
+                    }
                 }
-                Console.WriteLine();
             }
+            // corners
+            Map[0, 0] = '┌';
+            Map[columns - 1, 0] = '┐';
+            Map[0, rows - 1] = '└';
+            Map[columns - 1, rows - 1] = '┘';
+        }
+        public void PrintMap()
+        {
+            for (int y = 0; y < Map.GetLength(1); y++)
+            {
+                for (int x = 0; x < Map.GetLength(0); x++)
+                {
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(Map[x, y]);
+                }
+            }
+            Console.SetCursorPosition(CurrentPlayer.Column, CurrentPlayer.Row);
+            Console.Write(CurrentPlayer.Appereance);
         }
     }
 }
