@@ -7,6 +7,7 @@ public abstract class Item
 {
 
     public string Name { get; set; }
+    public int Count = 0;
 
     public Item()
     {
