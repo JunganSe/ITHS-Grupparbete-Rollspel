@@ -6,6 +6,7 @@ namespace Rollspel
 {
     public class LawnMower : IActiveObject
     {
+        public char Symbol { get; set; } = 'G';
         public int X { get; set; }
         public int Y { get; set; }
         public bool HorizontalDirection { get; set; }
@@ -20,7 +21,7 @@ namespace Rollspel
         public void Step()
         {
             FollowPlayer();
-            KillPlayer();
+            CheckPlayerKill();
         }
 
         private void FollowPlayer()
@@ -29,14 +30,14 @@ namespace Rollspel
             {
                 if (X < Player.X)
                 {
-                    if (true) // TODO: Kolla om (x+1, y) är tom.
+                    if (CheckFree(X + 1, Y))
                     {
                         X += 1;
                     }
                 }
                 else if (X > Player.X)
                 {
-                    if (true) // TODO: Kolla om (x-1, y) är tom.
+                    if (CheckFree(X - 1, Y))
                     {
                         X -= 1;
                     }
@@ -44,16 +45,16 @@ namespace Rollspel
             }
             else // Samma men vertikalt.
             {
-                if (Y < Player.Y) // TODO: Kolla om (x, y+1) är tom.
+                if (Y < Player.Y)
                 {
-                    if (true)
+                    if (CheckFree(X, Y + 1))
                     {
                         Y += 1;
                     }
                 }
                 else if (Y > Player.Y)
                 {
-                    if (true) // TODO: Kolla om (x, y-1) är tom.
+                    if (CheckFree(X, Y - 1))
                     {
                         Y -= 1;
                     }
@@ -61,12 +62,23 @@ namespace Rollspel
             }
         }
 
-        private void KillPlayer() // TODO: Gör färdigt, alternativt hantera detta i spelarklassen.
+        private void CheckPlayerKill()
         {
             if ((X == Player.X) && (Y == Player.Y))
             {
-                // Kod som tar död på spelaren och börjar om banan.
+                // TODO: Någon effekt?
+                Player.Kill();
             }
+        }
+
+        // Troligtvis temporär, bättre att använda en universell metod.
+        private bool CheckFree(int x, int y)
+        {
+            if (LevelHandler.CurrentLevel.Layout[x, y] == ' ')
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

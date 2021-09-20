@@ -6,9 +6,8 @@ namespace Rollspel
 {
     public static class LevelMaker
     {
-
-        // Används ej, bara en mall.
-        private static void Template(out string[] lines, out int startX, out int startY)
+        // Denna metod används ej, är bara en mall.
+        private static void Template(out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             // Kopiera denna metod och döp om till banans namn.
             // Använd detta format för att designa en bana.
@@ -37,11 +36,16 @@ namespace Rollspel
 
             startX = 1;
             startY = 1;
+
+            // Lägg till alla aktiva objekt i denna lista.
+            activeObjects = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
+            activeObjects.Add(new Exit(1, 1));
         }
 
-        public static void Test(out string[] lines, out int startX, out int startY)
+        public static void Test(out string name, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
-            // Testlevel 1
+            name = "Test";
+
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
             lines[01] = @"║X                   ÖVRE RADEN                            ║";
@@ -55,7 +59,7 @@ namespace Rollspel
             lines[09] = @"║T                 /   \(                                 E║";
             lines[10] = @"║E                (/`-'\)                                 R║";
             lines[11] = @"║R                                           ¤ ¤          K║";
-            lines[12] = @"║K                                           ¤ ¤          A║";
+            lines[12] = @"║K                        ¤                  ¤ ¤          A║";
             lines[13] = @"║A             \n                                         N║";
             lines[14] = @"║N        \e                                              T║";
             lines[15] = @"║T             \t                                          ║";
@@ -64,8 +68,12 @@ namespace Rollspel
             lines[18] = @"║                       NEDRE RADEN                       X║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
 
-            startX = 5;
-            startY = 10;
+            startX = 5;  // Spelarens startposition
+            startY = 10; //
+
+            activeObjects = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
+            activeObjects.Add(new Exit(58, 2));
+            activeObjects.Add(new LawnMower(35, 12, true));
         }
     }
 }

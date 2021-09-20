@@ -7,42 +7,42 @@ namespace Rollspel
     public static class LevelHandler
     {
         public static List<Level> Levels { get; set; } = new List<Level>(); // Lista med alla spelets banor.
+        public static Level CurrentLevel { get; set; }
         public static int Width { get; set; } = 60; // Banans bredd.
         public static int Height { get; set; } = 20; // Banans höjd.
         public static char[,] Layout { get;} = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
 
         public static void Initialize()
         {
+            // Arbetsvariabler
+            string name;
             string[] lines;
             int startX, startY;
 
-            LevelMaker.Test(out lines, out startX, out startY);
-
-            Level level = CreateLevel(lines, startX, startY);
+            LevelMaker.Test(out name, out lines, out startX, out startY, out List<IActiveObject> activeObjects); // Skapa data utfrån LevelMaker.
+            CurrentLevel = CreateLevel(name, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
             
-            DrawLevel(level, 25, 0); // Temporär
+            DrawLevel(CurrentLevel, 25, 0); // Temporär
         }
 
-        // Fyller layouten med mellanslag. Överflödig?
-        private static void ClearLayout()
+        // Anropas varje gång spelaren tar ett steg.
+        // Ritar banan och kör aktiva objekt.
+        public static void Step()
         {
-            for (int y = 0; y < Height; y++)
+            DrawLevel(CurrentLevel, 25, 0);
+
+            // Anropa step-metoden i alla aktiva objekt.
+            foreach (var item in CurrentLevel.ActiveObjects)
             {
-                for (int x = 0; x < Width; x++)
-                {
-                    Layout[x, y] = ' ';
-                }
+                item.Step();
             }
         }
 
-        // Omvandlar strängarna till en char-array.
-        // Skapar ett nytt level-objekt med layouten.
-        // Ställer vald startposition för spelaren på denna bana.
+        // Skapar en ny bana.
         // Returnerar objektet.
-        private static Level CreateLevel(string[] lines, int startX, int startY)
+        private static Level CreateLevel(string name, string[] lines, int startX, int startY, List<IActiveObject> activeObjects)
         {
-            ClearLayout(); // Överflödig?
-
+            // Omvandlar strängarna till char-array.
             for (int y = 0; y < Height; y++)
             {
                 for (int x = 0; x < Width; x++)
@@ -50,17 +50,19 @@ namespace Rollspel
                     Layout[x, y] = lines[y][x];
                 }
             }
-            Level level = new Level { 
+
+            // Skapa en ny bana och skicka in datan.
+            Level level = new Level {
+                Name = name,
                 Layout = Layout, 
                 StartX = startX, 
-                StartY = startY };
-            Levels.Add(level);
-            return level;
-        }
+                StartY = startY,
+                ActiveObjects = activeObjects };
 
-        private static bool CheckLevel(Level level) // TODO: Om tid finns, verifiera storleken på banan.
-        {
-            throw new NotImplementedException();
+            // Lägg till banan i listan med alla banor.
+            Levels.Add(level);
+            
+            return level;
         }
 
         // Ritar banan.
@@ -68,6 +70,7 @@ namespace Rollspel
         // anchorX och anchorY är var på skärmen det ska ritas.
         private static void DrawLevel(Level level, int anchorX, int anchorY)
         {
+            // Rita banan.
             for (int y = 0; y < Height; y++)
             {
                 Console.SetCursorPosition(anchorX, anchorY + y);
@@ -76,6 +79,15 @@ namespace Rollspel
                     Console.Write(level.Layout[x, y]);
                 }
             }
+
+            // Rita aktiva objekt.
+            foreach (var item in level.ActiveObjects)
+            {
+                Console.SetCursorPosition(anchorX + item.X, anchorY + item.Y);
+                Console.Write(item.Symbol);
+            }
+            Console.SetCursorPosition(0, anchorY + Height);
+            Console.Write($"Level: {level.Name}");
         }
     }
 }
