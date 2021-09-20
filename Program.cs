@@ -20,6 +20,7 @@ namespace TopDownTest
             while (true)
             {
                 room.CurrentPlayer.GetInput();
+                Console.Beep();
             }
         }
     }

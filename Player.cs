@@ -8,16 +8,16 @@ namespace TopDownTest
 {
     class Player
     {
-        public int Column { get; set; }
-        public int Row { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
         public char Appereance { get; set; } = '@';
-        public Room CurrentRoom { get; set; }
+        public Room CurrentRoom { get; set; }         // to get access to the layout of the map
 
-        public Player(int startingColumn, int startingRow, Room currentRoom)
+        public Player(int x, int y, Room currentRoom)
         {
             // set players starting position
-            Column = startingColumn;
-            Row = startingRow;
+            PositionX = x;
+            PositionY = y;
 
             // attach room to player
             CurrentRoom = currentRoom;
@@ -32,7 +32,7 @@ namespace TopDownTest
                 switch (input.Key)
                 {
                     case ConsoleKey.LeftArrow:
-                        if (TryToMove(Column - 1, Row))
+                        if (TryToMove(PositionX - 1, PositionY))
                         {
                             return;
                         }
@@ -41,7 +41,7 @@ namespace TopDownTest
                             break;
                         }                       
                     case ConsoleKey.RightArrow:
-                        if (TryToMove(Column + 1, Row))
+                        if (TryToMove(PositionX + 1, PositionY))
                         {
                             return;
                         }
@@ -50,7 +50,7 @@ namespace TopDownTest
                             break;
                         }
                     case ConsoleKey.UpArrow:
-                        if (TryToMove(Column, Row - 1))
+                        if (TryToMove(PositionX, PositionY - 1))
                         {
                             return;
                         }
@@ -59,7 +59,7 @@ namespace TopDownTest
                             break;
                         }
                     case ConsoleKey.DownArrow:
-                        if (TryToMove(Column, Row + 1))
+                        if (TryToMove(PositionX, PositionY + 1))
                         {
                             return;
                         }
@@ -74,12 +74,12 @@ namespace TopDownTest
         // check if a move can be made
         // arguments to this method should be the potential new position
         // for example for a move up the arguments should be (Column, Row - 1)
-        public bool TryToMove(int requestedColumn, int requestedRow)
+        public bool TryToMove(int requestedX, int requestedY)
         {
-            switch (CurrentRoom.Map[requestedColumn, requestedRow])
+            switch (CurrentRoom.Map[requestedX, requestedY])
             {
                 case ' ':
-                    MakeMovement(requestedColumn, requestedRow);
+                    MakeMovement(requestedX, requestedY);
                     return true;
                 case 'P':
                     // (Exempel)
@@ -90,20 +90,20 @@ namespace TopDownTest
                     // (Exempel)
                     // genomflyttningen görs och spelaren plockar upp saken:
                     // Inventory.Add("key")
-                    MakeMovement(requestedColumn, requestedRow);
+                    MakeMovement(requestedX, requestedY);
                     return true;
                 default:
                     return false;
             }
         }
 
-        public void MakeMovement(int newColumn, int newRow)
+        public void MakeMovement(int newX, int newY)
         {
-            Console.SetCursorPosition(Column, Row);
+            Console.SetCursorPosition(PositionX, PositionY);
             Console.Write(" ");
-            Column = newColumn;
-            Row = newRow;
-            Console.SetCursorPosition(Column, Row);
+            PositionX = newX;
+            PositionY = newY;
+            Console.SetCursorPosition(PositionX, PositionY);
             Console.Write(Appereance);
         }
     }
