@@ -9,13 +9,17 @@ namespace Rollspel
         public static List<Level> Levels { get; set; } = new List<Level>(); // Lista med alla spelets banor.
         public static int Width { get; set; } = 60; // Banans bredd.
         public static int Height { get; set; } = 20; // Banans höjd.
-        public static char[,] SendLayout { get;} = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
+        public static char[,] Layout { get;} = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
 
         public static void Initialize()
         {
-            Level level = CreateLevel(LevelMaker.Test(), 5, 1);
-            level.Layout[20, 15] = 'K'; // Testrad, stoppar in ett tecken i efterhand.
+            string[] lines;
+            int startX, startY;
 
+            LevelMaker.Test(out lines, out startX, out startY);
+
+            Level level = CreateLevel(lines, startX, startY);
+            
             DrawLevel(level, 25, 0); // Temporär
         }
 
@@ -26,7 +30,7 @@ namespace Rollspel
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    SendLayout[x, y] = ' ';
+                    Layout[x, y] = ' ';
                 }
             }
         }
@@ -43,22 +47,20 @@ namespace Rollspel
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    SendLayout[x, y] = lines[y][x];
+                    Layout[x, y] = lines[y][x];
                 }
             }
             Level level = new Level { 
-                Layout = SendLayout, 
+                Layout = Layout, 
                 StartX = startX, 
                 StartY = startY };
             Levels.Add(level);
             return level;
         }
 
-        private static bool CheckLevel(Level level)
+        private static bool CheckLevel(Level level) // TODO: Om tid finns, verifiera storleken på banan.
         {
-
-
-            return false;
+            throw new NotImplementedException();
         }
 
         // Ritar banan.

@@ -11,6 +11,7 @@ namespace Rollspel
         public int StartX { get; set; } // Startposition för spelaren.
         public int StartY { get; set; } // Startposition för spelaren.
         public List<IActiveObject> ActiveObjects { get; set; } = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
+        public int Steps { get; set; } = 0; // Räkneverk som ökas för varje steg man tar.
 
     }
 }

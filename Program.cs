@@ -6,6 +6,7 @@ namespace Rollspel
     {
         private static void Main(string[] args)
         {
+
             LevelHandler.Initialize();
 
             Console.ReadLine();

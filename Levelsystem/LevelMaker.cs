@@ -6,61 +6,66 @@ namespace Rollspel
 {
     public static class LevelMaker
     {
-        public static string[] Lines { get; set; } = new string[LevelHandler.Height]; // Strängar som används vid bandesignen.
 
         // Används ej, bara en mall.
-        private static string[] Template()
+        private static void Template(out string[] lines, out int startX, out int startY)
         {
-            // Kopiera denna metod och döp om.
+            // Kopiera denna metod och döp om till banans namn.
             // Använd detta format för att designa en bana.
-            // Se till att antalet tecken per rad stämmer med Width, och att antal rader stämmer med Height (i LevelHandler).
-            Lines[00] = @"╔══════════════════════════════════════════════════════════╗";
-            Lines[01] = @"║                                                          ║";
-            Lines[02] = @"║                                                          ║";
-            Lines[03] = @"║                                                          ║";
-            Lines[04] = @"║                                                          ║";
-            Lines[05] = @"║                                                          ║";
-            Lines[06] = @"║                                                          ║";
-            Lines[07] = @"║                                                          ║";
-            Lines[08] = @"║                                                          ║";
-            Lines[09] = @"║                                                          ║";
-            Lines[10] = @"║                                                          ║";
-            Lines[11] = @"║                                                          ║";
-            Lines[12] = @"║                                                          ║";
-            Lines[13] = @"║                                                          ║";
-            Lines[14] = @"║                                                          ║";
-            Lines[15] = @"║                                                          ║";
-            Lines[16] = @"║                                                          ║";
-            Lines[17] = @"║                                                          ║";
-            Lines[18] = @"║                                                          ║";
-            Lines[19] = @"╚══════════════════════════════════════════════════════════╝";
-            return Lines;
+            // Se till att antalet tecken per rad stämmer med (LevelHandler.Width), och att antal rader stämmer med (LevelHandler.Height).
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║                                                          ║";
+            lines[02] = @"║                                                          ║";
+            lines[03] = @"║                                                          ║";
+            lines[04] = @"║                                                          ║";
+            lines[05] = @"║                                                          ║";
+            lines[06] = @"║                                                          ║";
+            lines[07] = @"║                                                          ║";
+            lines[08] = @"║                                                          ║";
+            lines[09] = @"║                                                          ║";
+            lines[10] = @"║                                                          ║";
+            lines[11] = @"║                                                          ║";
+            lines[12] = @"║                                                          ║";
+            lines[13] = @"║                                                          ║";
+            lines[14] = @"║                                                          ║";
+            lines[15] = @"║                                                          ║";
+            lines[16] = @"║                                                          ║";
+            lines[17] = @"║                                                          ║";
+            lines[18] = @"║                                                          ║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+            startX = 1;
+            startY = 1;
         }
 
-        public static string[] Test()
+        public static void Test(out string[] lines, out int startX, out int startY)
         {
             // Testlevel 1
-            Lines[00] = @"╔══════════════════════════════════════════════════════════╗";
-            Lines[01] = @"║X                   ÖVRE RADEN                            ║";
-            Lines[02] = @"║ 1,1           \                                          ║";
-            Lines[03] = @"║                                                          ║";
-            Lines[04] = @"║              X                                           ║";
-            Lines[05] = @"║V                _  ,/|                    Q              ║";
-            Lines[06] = @"║Ä               '\`o.O'   _                              H║";
-            Lines[07] = @"║N                =(_*_)= (                               Ö║";
-            Lines[08] = @"║S                  )U(  _)                               G║";
-            Lines[09] = @"║T                 /   \(                                 E║";
-            Lines[10] = @"║E                (/`-'\)                                 R║";
-            Lines[11] = @"║R                                           ¤ ¤          K║";
-            Lines[12] = @"║K                                           ¤ ¤          A║";
-            Lines[13] = @"║A             \n                                         N║";
-            Lines[14] = @"║N                                                        T║";
-            Lines[15] = @"║T             \t                                          ║";
-            Lines[16] = @"║                                                          ║";
-            Lines[17] = @"║                                                   58,18  ║";
-            Lines[18] = @"║                       NEDRE RADEN                       X║";
-            Lines[19] = @"╚══════════════════════════════════════════════════════════╝";
-            return Lines;
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║X                   ÖVRE RADEN                            ║";
+            lines[02] = @"║ 1,1           \                                          ║";
+            lines[03] = @"║                                                          ║";
+            lines[04] = @"║                                                          ║";
+            lines[05] = @"║V                _  ,/|                    Q              ║";
+            lines[06] = @"║Ä               '\`o.O'   _                              H║";
+            lines[07] = @"║N                =(_*_)= (                               Ö║";
+            lines[08] = @"║S                  )U(  _)                               G║";
+            lines[09] = @"║T                 /   \(                                 E║";
+            lines[10] = @"║E                (/`-'\)                                 R║";
+            lines[11] = @"║R                                           ¤ ¤          K║";
+            lines[12] = @"║K                                           ¤ ¤          A║";
+            lines[13] = @"║A             \n                                         N║";
+            lines[14] = @"║N        \e                                              T║";
+            lines[15] = @"║T             \t                                          ║";
+            lines[16] = @"║                                                          ║";
+            lines[17] = @"║                                                   58,18  ║";
+            lines[18] = @"║                       NEDRE RADEN                       X║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+            startX = 5;
+            startY = 10;
         }
     }
 }
