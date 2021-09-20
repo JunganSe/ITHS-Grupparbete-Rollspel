@@ -6,9 +6,9 @@ namespace Rollspel
     {
         private static void Main(string[] args)
         {
-            var cc = new ConsoleCompanion();
+            LevelHandler.InitializeLevels();
 
-
+            Console.ReadLine();
         }
     }
 }
