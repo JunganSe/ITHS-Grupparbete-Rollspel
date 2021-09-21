@@ -8,8 +8,6 @@ using System.Text.Json.Serialization;
 using System.IO;
 
 namespace Rollspel
-
-namespace Rollspel
 {
     class Program
     {
