@@ -13,15 +13,7 @@ namespace TopDownTest
     {
         static void Main(string[] args)
         {
-            // Creates a room with a player
-            Room room = new Room(60, 20, 5, 5);
-            Player.CurrentRoom = room;
-
-            room.PrintMap();
-            while (true)
-            {
-                Player.GetInput();
-            }
+           
         }
     }
 }
