@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Rollspel
 {
-    interface IsEdible
+    internal interface IKickable
     {
     }
 }

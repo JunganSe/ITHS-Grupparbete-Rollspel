@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Rollspel
 {
-    interface IsKickable
+    public interface IEdible
     {
+
+
+
     }
+
+
 }

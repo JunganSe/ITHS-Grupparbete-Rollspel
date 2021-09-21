@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Net.NetworkInformation;
 using System.Text;
 
 namespace Rollspel
 {
     public static class Inventory
     {
+
+        public static List<Item> FoodList = new List<Item>();
         public static List<Item> ItemList = new List<Item>();
+
+
 
         public static List<Item> GetList()
         {
@@ -60,7 +66,27 @@ namespace Rollspel
 
                 case 2:
                     Console.WriteLine("Yeet!");
-                    break;
+
+
+                    //Här har jag lagt funktionaliteten för att hantera objekt i ryggsäcken, denna ska rimligen in under ett menyalternativ senare
+
+                    Console.WriteLine("Vill du hantera något annat i din ryggsäck?");
+                    int handleanswer = int.Parse(Console.ReadLine());
+
+
+                    if (handleanswer == 1)
+                    {
+
+                        UseInventoryItem();
+
+                        break;
+                    }
+                    else
+                    {
+
+                        break;
+                    }
+
 
                 default:
                     Console.WriteLine("Ange en siffra eller dra :)");
@@ -90,13 +116,25 @@ namespace Rollspel
 
 
 
+        }
 
+        public static void UseInventoryItem()
+        {
+            Console.WriteLine("Vilken av dina saker vill du hantera? Ange siffra för respektive objekt");
+            int itemToHandle = int.Parse(Console.ReadLine());
+
+            if (itemToHandle > 0)
+            {
+
+                ItemList[itemToHandle - 1].Use();
+            }
+            else
+            {
+                Console.WriteLine("Du måste ange en siffra mellan 1-6");
+            }
 
 
         }
-
-
-
 
 
     }

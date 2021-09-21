@@ -13,4 +13,11 @@ public abstract class Item
     {
 
     }
+
+    public virtual void Use()
+    {
+        Console.WriteLine("Use this item!");
+    }
+
+
 }

@@ -48,6 +48,7 @@ namespace Rollspel
                 Inventory.AddToInventory(input, matlista[randomindex]);
 
 
+
             }
             while (play);
 

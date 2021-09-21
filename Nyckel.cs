@@ -23,5 +23,10 @@ namespace Rollspel
         {
             Name = name;
         }
+
+        public override void Use()
+        {
+            Console.WriteLine("Kastar saken!");
+        }
     }
 }
