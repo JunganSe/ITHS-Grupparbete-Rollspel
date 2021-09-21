@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Rollspel
 {
-    class CatCar : IActiveObject
+    class CatCar : IActiveObject // TODO: Bug: Ibland efter reset rör den sig ett steg tidigare än normalt.
     {
         private int startX;
         private int startY;

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Rollspel
 {
-    public class LawnMower : IActiveObject
+    public class LawnMower : IActiveObject // TODO: Bug: Ibland efter reset rör den sig ett steg tidigare än normalt.
     {
         private int startX;
         private int startY;
-        private int nextMove = 0;
+        private int nextMove;
 
         public char Symbol { get; set; } = 'G';
         public int X { get; set; }
