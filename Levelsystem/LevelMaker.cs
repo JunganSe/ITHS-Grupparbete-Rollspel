@@ -99,8 +99,8 @@ namespace Rollspel
             lines[06] = @"║                                                          ║";
             lines[07] = @"║                                                          ║";
             lines[08] = @"║                                                          ║";
-            lines[09] = @"║                                                          ║";
-            lines[10] = @"║                                                          ║";
+            lines[09] = @"║                       DENNA BANA                         ║";
+            lines[10] = @"║                       ÄR EJ KLAR                         ║";
             lines[11] = @"║                                                          ║";
             lines[12] = @"║                                                          ║";
             lines[13] = @"║                                                          ║";

@@ -8,6 +8,10 @@ namespace Rollspel
     {
         private char symbolOpen = 'E';
         private char symbolClosed = 'e';
+
+        private int startX;
+        private int startY;
+
         public char Symbol { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -15,8 +19,15 @@ namespace Rollspel
 
         public Exit(int x, int y)
         {
-            X = x;
-            Y = y;
+            startX = x;
+            startY = y;
+            Reset();
+        }
+
+        public void Reset()
+        {
+            X = startX;
+            Y = startY;
             Open = false;
             Symbol = symbolClosed;
         }

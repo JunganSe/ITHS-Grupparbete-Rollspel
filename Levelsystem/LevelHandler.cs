@@ -25,13 +25,11 @@ namespace Rollspel
             LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
             CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
-            activeObjects.Clear();
-            LevelMaker.Yard(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
-            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+            LevelMaker.Yard(out name, out message, out lines, out startX, out startY, out activeObjects);
+            CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            activeObjects.Clear();
-            LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
-            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+            LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects);
+            CreateLevel(name, message, lines, startX, startY, activeObjects);
 
             CurrentLevel = Levels[1];
             Player.X = CurrentLevel.StartX; // Temporärt
@@ -42,14 +40,19 @@ namespace Rollspel
         // Går till en ny bana.
         public static void NextLevel()
         {
-            // TODO: Ställ CurrentLevel.
+            // TODO: Ställ CurrentLevel till nästa i listan.
             // TODO: Ställ startposition.
             // TODO: Uppdatera grafiskt.
         }
 
         public static void Restart()
         {
-            // TODO: Starta om banan.
+            Player.X = CurrentLevel.StartX;
+            Player.Y = CurrentLevel.StartY;
+            foreach (var item in CurrentLevel.ActiveObjects)
+            {
+                item.Reset();
+            }
         }
 
         // Anropas varje gång spelaren tar ett steg.

@@ -6,21 +6,33 @@ namespace Rollspel
 {
     public class LawnMower : IActiveObject
     {
+        private int startX;
+        private int startY;
         private int nextMove = 0;
+
         public char Symbol { get; set; } = 'G';
         public int X { get; set; }
         public int Y { get; set; }
-        public bool HorizontalDirection { get; set; }
+        public bool Horizontal { get; set; }
 
-        public LawnMower(int x, int y, bool horizontalDirection)
+        public LawnMower(int x, int y, bool horizontal)
         {
-            X = x;
-            Y = y;
-            HorizontalDirection = horizontalDirection;
+            startX = x;
+            startY = y;
+            Horizontal = horizontal;
+            Reset();
+        }
+
+        public void Reset()
+        {
+            X = startX;
+            Y = startY;
+            nextMove = 0;
         }
 
         public void Step()
         {
+            CheckPlayerKill();
             FollowPlayer();
             CheckPlayerKill();
         }
@@ -30,7 +42,7 @@ namespace Rollspel
         {
             if (nextMove != 0)
             {
-                if (HorizontalDirection)
+                if (Horizontal)
                 {
                     X += nextMove;
                 }
@@ -39,13 +51,13 @@ namespace Rollspel
                     Y += nextMove;
                 }
             }
-            if (((HorizontalDirection) && (X < Player.X) && (CheckFree(X + 1, Y)))
-                || ((!HorizontalDirection) && (Y < Player.Y) && (CheckFree(Y + 1, Y))))
+            if (((Horizontal) && (X < Player.X) && (CheckFree(X + 1, Y)))
+                || ((!Horizontal) && (Y < Player.Y) && (CheckFree(Y + 1, Y))))
             {
                 nextMove = 1;
             }
-            else if (((HorizontalDirection) && (X > Player.X) && (CheckFree(X - 1, Y)))
-                || ((!HorizontalDirection) && (Y > Player.Y) && (CheckFree(Y - 1, Y))))
+            else if (((Horizontal) && (X > Player.X) && (CheckFree(X - 1, Y)))
+                || ((!Horizontal) && (Y > Player.Y) && (CheckFree(Y - 1, Y))))
             {
                 nextMove = -1;
             }
@@ -59,7 +71,6 @@ namespace Rollspel
         {
             if ((X == Player.X) && (Y == Player.Y))
             {
-                // TODO: Någon visuell effekt?
                 Player.Kill();
             }
         }

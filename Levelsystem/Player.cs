@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Rollspel
 {
@@ -38,11 +39,17 @@ namespace Rollspel
             LevelHandler.CurrentLevel.Steps++;
         }
 
-        public static void Kill() // TODO: Implementera
+        public static void Kill()
         {
+            // TODO: Någon visuell effekt?
             // Kod som körs när spelaren dör.
             Console.SetCursorPosition(LevelHandler.AnchorX, 0); // Temp
-            Console.WriteLine("Du dog!");    //
+            Console.WriteLine("Du dog!");                       //
+            Thread.Sleep(500);                                  //
+            Console.SetCursorPosition(LevelHandler.AnchorX, 0); //
+            Console.WriteLine("       ");                       //
+
+            LevelHandler.Restart();
         }
     }
 }

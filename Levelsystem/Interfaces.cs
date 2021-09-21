@@ -10,6 +10,7 @@ namespace Rollspel
         public int X { get; set; }
         public int Y { get; set; }
         public void Step(); // Denna metod ska köras varje gång spelaren tar ett steg. Hanteras av LevelHandler.
+        public void Reset(); // Återställer objektet till startläge.
     }
 
     public interface IPushable // Saker man kan knuffa framför sig.

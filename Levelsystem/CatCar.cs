@@ -6,6 +6,9 @@ namespace Rollspel
 {
     class CatCar : IActiveObject
     {
+        private int startX;
+        private int startY;
+
         public char Symbol { get; set; } = 'K';
         public int X { get; set; }
         public int Y { get; set; }
@@ -14,21 +17,28 @@ namespace Rollspel
 
         public CatCar(int x, int y, int speed)
         {
-            X = x;
-            Y = y;
+            startX = x;
+            startY = y;
             Speed = speed;
+            Reset();
+        }
+
+        public void Reset()
+        {
+            X = startX;
+            Y = startY;
         }
 
         public void Step()
         {
             Move();
-            CheckPlayerKill();
         }
 
         private void Move()
         {
             for (int i = 0; i < Math.Abs(Speed); i++)
             {
+                CheckPlayerKill();
                 if (X < 2)
                 {
                     X = LevelHandler.Width - 3;
@@ -48,7 +58,6 @@ namespace Rollspel
         {
             if ((X == Player.X) && (Y == Player.Y))
             {
-                // TODO: Någon visuell effekt?
                 Player.Kill();
             }
         }
