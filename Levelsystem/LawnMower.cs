@@ -6,6 +6,7 @@ namespace Rollspel
 {
     public class LawnMower : IActiveObject
     {
+        private int nextMove = 0;
         public char Symbol { get; set; } = 'G';
         public int X { get; set; }
         public int Y { get; set; }
@@ -24,41 +25,33 @@ namespace Rollspel
             CheckPlayerKill();
         }
 
+        // Ställer sig på samma höjd eller bredd som spelaren, med ett stegs eftersläpning.
         private void FollowPlayer()
         {
-            if (HorizontalDirection) // Jämför med spelaren och flytta i sidled för att matcha dens x-värde, om platsen är ledig.
+            if (nextMove != 0)
             {
-                if (X < Player.X)
+                if (HorizontalDirection)
                 {
-                    if (CheckFree(X + 1, Y))
-                    {
-                        X += 1;
-                    }
+                    X += nextMove;
                 }
-                else if (X > Player.X)
+                else
                 {
-                    if (CheckFree(X - 1, Y))
-                    {
-                        X -= 1;
-                    }
+                    Y += nextMove;
                 }
             }
-            else // Samma men vertikalt.
+            if (((HorizontalDirection) && (X < Player.X) && (CheckFree(X + 1, Y)))
+                || ((!HorizontalDirection) && (Y < Player.Y) && (CheckFree(Y + 1, Y))))
             {
-                if (Y < Player.Y)
-                {
-                    if (CheckFree(X, Y + 1))
-                    {
-                        Y += 1;
-                    }
-                }
-                else if (Y > Player.Y)
-                {
-                    if (CheckFree(X, Y - 1))
-                    {
-                        Y -= 1;
-                    }
-                }
+                nextMove = 1;
+            }
+            else if (((HorizontalDirection) && (X > Player.X) && (CheckFree(X - 1, Y)))
+                || ((!HorizontalDirection) && (Y > Player.Y) && (CheckFree(Y - 1, Y))))
+            {
+                nextMove = -1;
+            }
+            else
+            {
+                nextMove = 0;
             }
         }
 

@@ -38,8 +38,8 @@ namespace Rollspel
             lines[18] = @"║                                                          ║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
 
-            startX = 1; // Spelarens startposition
-            startY = 1; //
+            startX = 29; // Spelarens startposition
+            startY = 18; //
 
             // Lägg till alla aktiva objekt i denna lista.
             activeObjects = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
@@ -80,6 +80,48 @@ namespace Rollspel
             activeObjects.Add(new Exit(58, 2));
             activeObjects.Add(new LawnMower(35, 12, true));
             activeObjects.Add(new LawnMower(46, 8, false));
+        }
+
+        public static void Yard(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        {
+            name = "Trädgård";
+            message = "Du kommer ut ur huset och sätter fötterna på gräsmattan. Flera av grannskapets gräsklippare verkar ha samlats just här.\n" +
+                "De verkar samtala med varandra med ett dovt tomgångsljud. Tvåtaktarna verkar lite upprörda, kanske är det bara åldern\n" +
+                "som gör dem vresiga. Gräsklipparna verkar uppmärksamma att du är här, och närmar sig för att blockera din väg...";
+
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║                                                          ║";
+            lines[02] = @"║                                                          ║";
+            lines[03] = @"║                                                          ║";
+            lines[04] = @"║                                                          ║";
+            lines[05] = @"║                                                          ║";
+            lines[06] = @"║                                                          ║";
+            lines[07] = @"║                                                          ║";
+            lines[08] = @"║                                                          ║";
+            lines[09] = @"║                                                          ║";
+            lines[10] = @"║                                                          ║";
+            lines[11] = @"║                                                          ║";
+            lines[12] = @"║                                                          ║";
+            lines[13] = @"║                                                          ║";
+            lines[14] = @"║                                                          ║";
+            lines[15] = @"║                                                          ║";
+            lines[16] = @"║                                                          ║";
+            lines[17] = @"║                                                          ║";
+            lines[18] = @"║                                                          ║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+            startX = 29;
+            startY = 18;
+
+            activeObjects = new List<IActiveObject>();
+            activeObjects.Add(new Exit(58, 1));
+            activeObjects.Add(new LawnMower(35, 12, true));
+            activeObjects.Add(new LawnMower(35, 14, true));
+            activeObjects.Add(new LawnMower(35, 16, true));
+            activeObjects.Add(new LawnMower(15, 10, false));
+            activeObjects.Add(new LawnMower(18, 10, false));
+            activeObjects.Add(new LawnMower(21, 10, false));
         }
 
         public static void Road(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)

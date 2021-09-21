@@ -26,6 +26,10 @@ namespace Rollspel
             CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
             activeObjects.Clear();
+            LevelMaker.Yard(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
+            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+
+            activeObjects.Clear();
             LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
             CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
@@ -122,9 +126,9 @@ namespace Rollspel
             Console.SetCursorPosition(49, 0);
             Console.Write($"Bana: {level.Name}    Steg: {level.Steps}");
 
-            // Skriv ut banans meddelande. (Temporär)
-            Console.SetCursorPosition(0, AnchorY + Height + 1);
-            Console.Write(level.Message);
+            // Skriv ut banans meddelande.
+            Console.SetCursorPosition(0, AnchorY + Height);
+            Console.WriteLine(level.Message);
         }
     }
 }
