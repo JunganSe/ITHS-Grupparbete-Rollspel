@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
 
-namespace TopDownTest
+namespace Rollspel
 {
     class Program
     {
