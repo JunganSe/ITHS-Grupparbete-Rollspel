@@ -15,12 +15,12 @@ namespace TopDownTest
         {
             // Creates a room with a player
             Room room = new Room(60, 20, 5, 5);
+            Player.CurrentRoom = room;
 
             room.PrintMap();
             while (true)
             {
-                room.CurrentPlayer.GetInput();
-                Console.Beep();
+                Player.GetInput();
             }
         }
     }

@@ -6,14 +6,9 @@ namespace TopDownTest
     {
         public char[,] Map { get; set; }
 
-        // this player that will interact with the Map propertie
-        public Player CurrentPlayer { get; set; }
-
         public Room(int MapWidth, int MapHeight, int playerColumn, int playerRow)
         {
             Console.CursorVisible = false;
-            // assigns the player to this room
-            CurrentPlayer = new Player(playerColumn, playerRow, this);
             // creates the map
             CreateMap(MapWidth, MapHeight);
         }
@@ -58,8 +53,8 @@ namespace TopDownTest
                     Console.Write(Map[x, y]);
                 }
             }
-            Console.SetCursorPosition(CurrentPlayer.PositionX, CurrentPlayer.PositionY);
-            Console.Write(CurrentPlayer.Appereance);
+            Console.SetCursorPosition(Player.PositionX, Player.PositionY);
+            Console.Write(Player.Appereance);
         }
     }
 }

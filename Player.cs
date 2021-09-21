@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace TopDownTest
 {
-    class Player
+    static class Player
     {
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
-        public char Appereance { get; set; } = '@';
-        public Room CurrentRoom { get; set; }         // to get access to the layout of the map
+        public static int PositionX { get; set; }
+        public static int PositionY { get; set; }
 
-        public Player(int x, int y, Room currentRoom)
-        {
-            // set players starting position
-            PositionX = x;
-            PositionY = y;
+        public static char Appereance { get; set; } = '@';
+        public static Room CurrentRoom { get; set; } // this gives Player access to the map (this might not be the best way?)
 
-            // attach room to player
-            CurrentRoom = currentRoom;
-        }
-
-        public void GetInput()
+        public static void GetInput()
         {
             // Look for input until legal input is provided
             while (true)
@@ -68,13 +59,18 @@ namespace TopDownTest
                             break;
                         }
                 }
+                // waits until keys are available again before leaving the method
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(true);
+                }
             }
         }
 
         // check if a move can be made
         // arguments to this method should be the potential new position
         // for example for a move up the arguments should be (Column, Row - 1)
-        public bool TryToMove(int requestedX, int requestedY)
+        public static bool TryToMove(int requestedX, int requestedY)
         {
             switch (CurrentRoom.Map[requestedX, requestedY])
             {
@@ -97,7 +93,7 @@ namespace TopDownTest
             }
         }
 
-        public void MakeMovement(int newX, int newY)
+        public static void MakeMovement(int newX, int newY)
         {
             Console.SetCursorPosition(PositionX, PositionY);
             Console.Write(" ");
@@ -105,6 +101,12 @@ namespace TopDownTest
             PositionY = newY;
             Console.SetCursorPosition(PositionX, PositionY);
             Console.Write(Appereance);
+        }
+
+        public static void ResetPlayer()
+        {
+            PositionX = 3;
+            PositionY = 3;
         }
     }
 }
