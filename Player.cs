@@ -13,6 +13,7 @@ namespace TopDownTest
 
         public static char Appereance { get; set; } = '@';
         public static Room CurrentRoom { get; set; } // this gives Player access to the map (this might not be the best way?)
+        public static int HeadInjuries { get; set; } = 0; // how many times the Player walked into the wall
 
         public static void GetInput()
         {
