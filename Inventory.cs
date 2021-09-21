@@ -9,7 +9,6 @@ namespace Rollspel
     public static class Inventory
     {
 
-        public static List<Item> FoodList = new List<Item>();
         public static List<Item> ItemList = new List<Item>();
 
 
@@ -31,7 +30,6 @@ namespace Rollspel
                 Console.WriteLine($"*{index}. {ItemList[i].Name}");
             }
 
-            Console.WriteLine("******************");
 
         }
 
@@ -86,6 +84,8 @@ namespace Rollspel
 
                         break;
                     }
+
+                    //Här slutar den biten
 
 
                 default:
