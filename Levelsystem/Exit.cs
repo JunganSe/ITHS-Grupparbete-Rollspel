@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Rollspel
 {
-    class Exit : IActiveObject
+    internal class Exit : IActiveObject
     {
-        public char Symbol { get; set; } = 'E';
+        public char Symbol { get; set; } = ' ';
         public int X { get; set; }
         public int Y { get; set; }
         public bool Open { get; set; } = false;
@@ -25,10 +25,10 @@ namespace Rollspel
 
         private void CheckObjective()
         {
-            if (true) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
+            if (Checkpoint.Counter == 3)
             {
                 Open = true;
-                Symbol = 'F';
+                Symbol = '»';
             }
         }
 

@@ -10,7 +10,7 @@ namespace Rollspel
         public static Level CurrentLevel { get; set; }
         public static int Width { get; set; } = 60; // Banans bredd.
         public static int Height { get; set; } = 20; // Banans höjd.
-        public static char[,] Layout { get;} = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
+        public static char[,] Layout { get; } = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
 
         public static void Initialize()
         {
@@ -21,7 +21,7 @@ namespace Rollspel
 
             LevelMaker.Test(out name, out lines, out startX, out startY, out List<IActiveObject> activeObjects); // Skapa data utfrån LevelMaker.
             CurrentLevel = CreateLevel(name, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
-            
+
             DrawLevel(CurrentLevel, 25, 0); // Temporär
         }
 
@@ -52,16 +52,18 @@ namespace Rollspel
             }
 
             // Skapa en ny bana och skicka in datan.
-            Level level = new Level {
+            Level level = new Level
+            {
                 Name = name,
-                Layout = Layout, 
-                StartX = startX, 
+                Layout = Layout,
+                StartX = startX,
                 StartY = startY,
-                ActiveObjects = activeObjects };
+                ActiveObjects = activeObjects
+            };
 
             // Lägg till banan i listan med alla banor.
             Levels.Add(level);
-            
+
             return level;
         }
 
@@ -78,6 +80,7 @@ namespace Rollspel
                 {
                     Console.Write(level.Layout[x, y]);
                 }
+
             }
 
             // Rita spelaren.
