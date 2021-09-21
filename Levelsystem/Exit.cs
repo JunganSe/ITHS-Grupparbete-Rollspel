@@ -34,7 +34,7 @@ namespace Rollspel
 
         private void CheckPlayerPosition()
         {
-            if ((Open) && (X == Player.X) && (Y == Player.Y))
+            if ((Open) && (X == Player.PositionX) && (Y == Player.PositionY))
             {
                 // TODO: Gå till nästa bana.
             }

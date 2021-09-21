@@ -21,13 +21,14 @@ namespace Rollspel
 
         public static void PrintInventory()
         {
-
-            Console.WriteLine("******************");
+            Console.SetCursorPosition(2, 21);
+            Console.WriteLine("****   INVENTORY    ******");
             for (int i = 0; i < ItemList.Count; i++)
             {
                 int index = i + 1;
 
-                Console.WriteLine($"*{index}. {ItemList[i].Name}");
+                Console.SetCursorPosition(2, 22 + i);
+                Console.WriteLine($"{index}. {ItemList[i].Name}");
             }
 
 

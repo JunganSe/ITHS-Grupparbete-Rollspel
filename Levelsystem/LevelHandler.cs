@@ -81,8 +81,8 @@ namespace Rollspel
             }
 
             // Rita spelaren.
-            Console.SetCursorPosition(anchorX + Player.X, anchorY + Player.Y);
-            Console.Write(Player.Symbol);
+            Console.SetCursorPosition(anchorX + Player.PositionX, anchorY + Player.PositionY);
+            Console.Write(Player.Appereance);
 
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)

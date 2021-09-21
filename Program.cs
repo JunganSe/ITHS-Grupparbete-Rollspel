@@ -15,7 +15,23 @@ namespace Rollspel
         {
             var cc = new ConsoleCompanion();
 
-            Room room = new Room();
+            Console.CursorVisible = false;
+
+            Room.CreateMap(60, 20);
+            Room.PrintMap();
+
+            Room.CreateInventorySpace(30, 10);
+            Room.PrintInventorySpace();
+
+            Nyckel k = new Nyckel();
+            k.Name = "Nyckel till källare";
+            Inventory.ItemList.Add(k);
+            Inventory.PrintInventory();
+
+            while (true)
+            {
+                Player.GetInput();
+            }
         }
     }
 }

@@ -28,14 +28,14 @@ namespace Rollspel
         {
             if (HorizontalDirection) // Jämför med spelaren och flytta i sidled för att matcha dens x-värde, om platsen är ledig.
             {
-                if (X < Player.X)
+                if (X < Player.PositionX)
                 {
                     if (CheckFree(X + 1, Y))
                     {
                         X += 1;
                     }
                 }
-                else if (X > Player.X)
+                else if (X > Player.PositionX)
                 {
                     if (CheckFree(X - 1, Y))
                     {
@@ -45,14 +45,14 @@ namespace Rollspel
             }
             else // Samma men vertikalt.
             {
-                if (Y < Player.Y)
+                if (Y < Player.PositionY)
                 {
                     if (CheckFree(X, Y + 1))
                     {
                         Y += 1;
                     }
                 }
-                else if (Y > Player.Y)
+                else if (Y > Player.PositionY)
                 {
                     if (CheckFree(X, Y - 1))
                     {
@@ -64,10 +64,10 @@ namespace Rollspel
 
         private void CheckPlayerKill()
         {
-            if ((X == Player.X) && (Y == Player.Y))
+            if ((X == Player.PositionX) && (Y == Player.PositionY))
             {
                 // TODO: Någon effekt?
-                Player.Kill();
+                Player.Reset();
             }
         }
 

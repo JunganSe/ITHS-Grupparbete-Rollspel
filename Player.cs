@@ -8,11 +8,10 @@ namespace Rollspel
 {
     static class Player
     {
-        public static int PositionX { get; set; }
-        public static int PositionY { get; set; }
+        public static int PositionX { get; set; } = 3; 
+        public static int PositionY { get; set; } = 3;
 
         public static char Appereance { get; set; } = '@';
-        public static Room CurrentRoom { get; set; } // this gives Player access to the map (this might not be the best way?)
         public static int HeadInjuries { get; set; } = 0; // how many times the Player walked into the wall
 
         public static void GetInput()
@@ -73,7 +72,7 @@ namespace Rollspel
         // for example for a move up the arguments should be (Column, Row - 1)
         public static bool TryToMove(int requestedX, int requestedY)
         {
-            switch (CurrentRoom.Map[requestedX, requestedY])
+            switch (Room.Map[requestedX, requestedY])
             {
                 case ' ':
                     MakeMovement(requestedX, requestedY);
@@ -104,7 +103,7 @@ namespace Rollspel
             Console.Write(Appereance);
         }
 
-        public static void ResetPlayer()
+        public static void Reset()
         {
             PositionX = 3;
             PositionY = 3;
