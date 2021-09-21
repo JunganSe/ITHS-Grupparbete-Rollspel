@@ -15,9 +15,7 @@ namespace Rollspel
     {
         static void Main(string[] args)
         {
-
             var cc = new ConsoleCompanion();
-
         }
     }
 }
