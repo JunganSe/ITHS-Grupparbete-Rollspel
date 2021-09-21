@@ -32,17 +32,27 @@ namespace Rollspel
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
             CurrentLevel = Levels[1];
-            Player.X = CurrentLevel.StartX; // Temporärt
-            Player.Y = CurrentLevel.StartY; //
+            //Player.X = CurrentLevel.StartX; // Temporärt
+            //Player.Y = CurrentLevel.StartY; //
+            Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
 
         // Går till en ny bana.
         public static void NextLevel()
         {
-            // TODO: Ställ CurrentLevel till nästa i listan.
-            // TODO: Ställ startposition.
-            // TODO: Uppdatera grafiskt.
+            if (CurrentLevel != Levels[Levels.Count - 1])
+            {
+                CurrentLevel = Levels[Levels.IndexOf(CurrentLevel) + 1];
+                Console.Clear();
+                Restart();
+            }
+            else
+            {
+                // TODO: Klara spelet!
+                Console.SetCursorPosition(LevelHandler.AnchorX, 0); // Temp
+                Console.WriteLine("Du klarade spelet!");            //
+            }
         }
 
         public static void Restart()
