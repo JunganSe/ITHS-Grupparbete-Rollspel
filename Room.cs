@@ -6,7 +6,7 @@ namespace Rollspel
     {
         public char[,] Map { get; set; }
 
-        public Room(int MapWidth, int MapHeight, int playerColumn, int playerRow)
+        public Room(int MapWidth, int MapHeight)
         {
             Console.CursorVisible = false;
             // creates the map
