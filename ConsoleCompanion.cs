@@ -11,6 +11,7 @@ namespace Rollspel
         Letter,
         Digit
     }
+
     public class ConsoleCompanion
     {
         public int AskForInt(string question = "Mata in en siffra", string errorMessage = "")
@@ -328,5 +329,6 @@ namespace Rollspel
 
             _ => (currentRow, currentCol, false),
         };
+
     }
 }
