@@ -6,15 +6,19 @@ namespace Rollspel
 {
     class Exit : IActiveObject
     {
-        public char Symbol { get; set; } = 'E';
+        private char symbolOpen = 'E';
+        private char symbolClosed = 'e';
+        public char Symbol { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public bool Open { get; set; } = false;
+        public bool Open { get; set; }
 
         public Exit(int x, int y)
         {
             X = x;
             Y = y;
+            Open = false;
+            Symbol = symbolClosed;
         }
 
         public void Step()
@@ -25,10 +29,10 @@ namespace Rollspel
 
         private void CheckObjective()
         {
-            if (true) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
+            if (true) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske med: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
             {
                 Open = true;
-                Symbol = 'F';
+                Symbol = symbolOpen;
             }
         }
 
@@ -36,7 +40,7 @@ namespace Rollspel
         {
             if ((Open) && (X == Player.X) && (Y == Player.Y))
             {
-                // TODO: Gå till nästa bana.
+                LevelHandler.NextLevel();
             }
         }
     }

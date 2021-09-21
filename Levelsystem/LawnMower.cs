@@ -66,7 +66,7 @@ namespace Rollspel
         {
             if ((X == Player.X) && (Y == Player.Y))
             {
-                // TODO: Någon effekt?
+                // TODO: Någon visuell effekt?
                 Player.Kill();
             }
         }

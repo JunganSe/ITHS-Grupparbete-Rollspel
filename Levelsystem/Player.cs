@@ -28,15 +28,21 @@ namespace Rollspel
                 Y += 1;
                 break;
             }
+
+            // Tömmer bufferten. Tar bort skridskokänslan.
             while (Console.KeyAvailable)
             {
                 Console.ReadKey(true);
             }
+
+            LevelHandler.CurrentLevel.Steps++;
         }
 
         public static void Kill() // TODO: Implementera
         {
             // Kod som körs när spelaren dör.
+            Console.SetCursorPosition(LevelHandler.AnchorX, 0); // Temp
+            Console.WriteLine("Du dog!");    //
         }
     }
 }

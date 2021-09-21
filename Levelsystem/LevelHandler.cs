@@ -8,56 +8,81 @@ namespace Rollspel
     {
         public static List<Level> Levels { get; set; } = new List<Level>(); // Lista med alla spelets banor.
         public static Level CurrentLevel { get; set; }
-        public static int Width { get; set; } = 60; // Banans bredd.
-        public static int Height { get; set; } = 20; // Banans höjd.
-        public static char[,] Layout { get;} = new char[Width, Height]; // Banlayouten som ska skickas in i en ny bana.
+        public static int Width { get; } = 60; // Banans bredd.
+        public static int Height { get; } = 20; // Banans höjd.
+        public static int AnchorX { get; } = 30; // Sidoförskjutning när banan ritas.
+        public static int AnchorY { get; } = 1; // Höjdförskjutning när banan ritas.
 
+        // Körs en gång när spelet startar.
         public static void Initialize()
         {
             // Arbetsvariabler
-            string name;
+            string name, message;
             string[] lines;
             int startX, startY;
+            List<IActiveObject> activeObjects;
 
-            LevelMaker.Test(out name, out lines, out startX, out startY, out List<IActiveObject> activeObjects); // Skapa data utfrån LevelMaker.
-            CurrentLevel = CreateLevel(name, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
-            
-            DrawLevel(CurrentLevel, 25, 0); // Temporär
+            LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
+            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+
+            activeObjects.Clear();
+            LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
+            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+
+            CurrentLevel = Levels[1];
+            Player.X = CurrentLevel.StartX; // Temporärt
+            Player.Y = CurrentLevel.StartY; //
+            DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
+        }
+
+        // Går till en ny bana.
+        public static void NextLevel()
+        {
+            // TODO: Ställ CurrentLevel.
+            // TODO: Ställ startposition.
+            // TODO: Uppdatera grafiskt.
+        }
+
+        public static void Restart()
+        {
+            // TODO: Starta om banan.
         }
 
         // Anropas varje gång spelaren tar ett steg.
         // Ritar banan och kör aktiva objekt.
         public static void Step()
         {
-            DrawLevel(CurrentLevel, 25, 0);
-
             // Anropa step-metoden i alla aktiva objekt.
             foreach (var item in CurrentLevel.ActiveObjects)
             {
                 item.Step();
             }
+
+            DrawLevel(CurrentLevel);
         }
 
         // Skapar en ny bana.
         // Returnerar objektet.
-        private static Level CreateLevel(string name, string[] lines, int startX, int startY, List<IActiveObject> activeObjects)
+        private static Level CreateLevel(string name, string message, string[] lines, int startX, int startY, List<IActiveObject> activeObjects)
         {
             // Omvandlar strängarna till char-array.
+            char[,] sendLayout = new char[Width, Height];
             for (int y = 0; y < Height; y++)
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    Layout[x, y] = lines[y][x];
+                    sendLayout[x, y] = lines[y][x];
                 }
             }
 
             // Skapa en ny bana och skicka in datan.
             Level level = new Level {
                 Name = name,
-                Layout = Layout, 
+                Message = message,
+                Layout = sendLayout, 
                 StartX = startX, 
                 StartY = startY,
-                ActiveObjects = activeObjects };
+                ActiveObjects = new List<IActiveObject>(activeObjects) };
 
             // Lägg till banan i listan med alla banor.
             Levels.Add(level);
@@ -68,32 +93,38 @@ namespace Rollspel
         // Ritar banan.
         // Utvecklingsmetod, bör uppdateras för slutprodukten.
         // anchorX och anchorY är var på skärmen det ska ritas.
-        private static void DrawLevel(Level level, int anchorX, int anchorY)
+        private static void DrawLevel(Level level)
         {
             // Rita banan.
             for (int y = 0; y < Height; y++)
             {
-                Console.SetCursorPosition(anchorX, anchorY + y);
+                Console.SetCursorPosition(AnchorX, AnchorY + y);
+                string line = "";
                 for (int x = 0; x < Width; x++)
                 {
-                    Console.Write(level.Layout[x, y]);
+                    line += level.Layout[x, y];
                 }
+                Console.Write(line);
             }
 
             // Rita spelaren.
-            Console.SetCursorPosition(anchorX + Player.X, anchorY + Player.Y);
+            Console.SetCursorPosition(AnchorX + Player.X, AnchorY + Player.Y);
             Console.Write(Player.Symbol);
 
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)
             {
-                Console.SetCursorPosition(anchorX + item.X, anchorY + item.Y);
+                Console.SetCursorPosition(AnchorX + item.X, AnchorY + item.Y);
                 Console.Write(item.Symbol);
             }
 
-            // Återställ markören.
-            Console.SetCursorPosition(0, anchorY + Height);
-            Console.Write($"Level: {level.Name}");
+            // Rita info om banan.
+            Console.SetCursorPosition(49, 0);
+            Console.Write($"Bana: {level.Name}    Steg: {level.Steps}");
+
+            // Skriv ut banans meddelande. (Temporär)
+            Console.SetCursorPosition(0, AnchorY + Height + 1);
+            Console.Write(level.Message);
         }
     }
 }
