@@ -31,9 +31,7 @@ namespace Rollspel
             LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[1];
-            //Player.X = CurrentLevel.StartX; // Temporärt
-            //Player.Y = CurrentLevel.StartY; //
+            CurrentLevel = Levels[0];
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
