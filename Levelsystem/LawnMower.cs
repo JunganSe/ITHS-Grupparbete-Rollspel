@@ -51,13 +51,13 @@ namespace Rollspel
                     Y += nextMove;
                 }
             }
-            if (((Horizontal) && (X < PlayerTemp.X) && (CheckFree(X + 1, Y)))
-                || ((!Horizontal) && (Y < PlayerTemp.Y) && (CheckFree(Y + 1, Y))))
+            if (((Horizontal) && (X < Player.X) && (CheckFree(X + 1, Y)))
+                || ((!Horizontal) && (Y < Player.Y) && (CheckFree(Y + 1, Y))))
             {
                 nextMove = 1;
             }
-            else if (((Horizontal) && (X > PlayerTemp.X) && (CheckFree(X - 1, Y)))
-                || ((!Horizontal) && (Y > PlayerTemp.Y) && (CheckFree(Y - 1, Y))))
+            else if (((Horizontal) && (X > Player.X) && (CheckFree(X - 1, Y)))
+                || ((!Horizontal) && (Y > Player.Y) && (CheckFree(Y - 1, Y))))
             {
                 nextMove = -1;
             }
@@ -69,9 +69,9 @@ namespace Rollspel
 
         private void CheckPlayerKill()
         {
-            if ((X == PlayerTemp.X) && (Y == PlayerTemp.Y))
+            if ((X == Player.X) && (Y == Player.Y))
             {
-                PlayerTemp.Kill();
+                Player.Kill();
             }
         }
 

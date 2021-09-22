@@ -53,8 +53,8 @@ namespace Rollspel
                     Console.Write(Map[x, y]);
                 }
             }
-            Console.SetCursorPosition(Player.PositionX, Player.PositionY);
-            Console.Write(Player.Appereance);
+            Console.SetCursorPosition(Player.X, Player.Y);
+            Console.Write(Player.Symbol);
         }
     }
 }

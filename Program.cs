@@ -14,13 +14,21 @@ namespace Rollspel
     {
         static void Main(string[] args)
         {
+            Inventory.ItemList.Add(new Nyckel() { Name = "nyckel" });
+            Inventory.ItemList.Add(new Nyckel() { Name = "cyckel" });
+            Inventory.ItemList.Add(new Nyckel() { Name = "myckel" });
+
+
+            Inventory.PrintInventory();
+
+            // Console.CursorVisible = false;
             var cc = new ConsoleCompanion();
           
             LevelHandler.Initialize();
             while (true)
             {
-                PlayerTemp.Move();
-                LevelHandler.Step(); // Kanske bättre att anropa denna från Player.Move(), eftersom den bara ska köras om man faktiskt rör på sig.
+                Player.GetInput();
+                LevelHandler.Step(); // TODO: Gör så att denna bara körs om spelaren flyttar sig.
             }
 
 

@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rollspel
 {
     static class Player
     {
-        public static int PositionX { get; set; }
-        public static int PositionY { get; set; }
-
-        public static char Appereance { get; set; } = '@';
-        public static Room CurrentRoom { get; set; } // this gives Player access to the map (this might not be the best way?)
-        public static int HeadInjuries { get; set; } = 0; // how many times the Player walked into the wall
+        public static int X { get; set; }
+        public static int Y { get; set; }
+        public static char Symbol { get; set; } = '@';
+        public static int Bonks { get; set; } = 0; // how many times the Player walked into the wall
 
         public static void GetInput()
         {
@@ -24,7 +23,7 @@ namespace Rollspel
                 switch (input.Key)
                 {
                     case ConsoleKey.LeftArrow:
-                        if (TryToMove(PositionX - 1, PositionY))
+                        if (TryToMove(X - 1, Y))
                         {
                             return;
                         }
@@ -33,7 +32,7 @@ namespace Rollspel
                             break;
                         }                       
                     case ConsoleKey.RightArrow:
-                        if (TryToMove(PositionX + 1, PositionY))
+                        if (TryToMove(X + 1, Y))
                         {
                             return;
                         }
@@ -42,7 +41,7 @@ namespace Rollspel
                             break;
                         }
                     case ConsoleKey.UpArrow:
-                        if (TryToMove(PositionX, PositionY - 1))
+                        if (TryToMove(X, Y - 1))
                         {
                             return;
                         }
@@ -51,7 +50,7 @@ namespace Rollspel
                             break;
                         }
                     case ConsoleKey.DownArrow:
-                        if (TryToMove(PositionX, PositionY + 1))
+                        if (TryToMove(X, Y + 1))
                         {
                             return;
                         }
@@ -73,7 +72,7 @@ namespace Rollspel
         // for example for a move up the arguments should be (Column, Row - 1)
         public static bool TryToMove(int requestedX, int requestedY)
         {
-            switch (CurrentRoom.Map[requestedX, requestedY])
+            switch (LevelHandler.CurrentLevel.Layout[requestedX, requestedY])
             {
                 case ' ':
                     MakeMovement(requestedX, requestedY);
@@ -83,7 +82,7 @@ namespace Rollspel
                     // en person som man kan prata med, förflyttningen görs inte men dialog alternativ kommer upp
                     // Talk()
                     return false;
-                case 'K':
+                case 'J':
                     // (Exempel)
                     // genomflyttningen görs och spelaren plockar upp saken:
                     // Inventory.Add("key")
@@ -96,18 +95,21 @@ namespace Rollspel
 
         public static void MakeMovement(int newX, int newY)
         {
-            Console.SetCursorPosition(PositionX, PositionY);
-            Console.Write(" ");
-            PositionX = newX;
-            PositionY = newY;
-            Console.SetCursorPosition(PositionX, PositionY);
-            Console.Write(Appereance);
+            X = newX;
+            Y = newY;
         }
 
-        public static void ResetPlayer()
+        public static void Kill()
         {
-            PositionX = 3;
-            PositionY = 3;
+            // TODO: Någon visuell effekt?
+            // Kod som körs när spelaren dör.
+            Console.SetCursorPosition(LevelHandler.AnchorX, 0); // Temp
+            Console.WriteLine("Du dog!");                       //
+            Thread.Sleep(500);                                  //
+            Console.SetCursorPosition(LevelHandler.AnchorX, 0); //
+            Console.WriteLine("       ");                       //
+
+            LevelHandler.Restart();
         }
     }
 }
