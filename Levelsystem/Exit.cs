@@ -34,13 +34,24 @@ namespace Rollspel
 
         public void Step()
         {
-            CheckObjective();
             CheckPlayerPosition();
+            CheckObjective();
         }
 
         private void CheckObjective()
         {
-            if (true) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske med: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
+            bool open = false;
+            switch (LevelHandler.CurrentLevel.Name)
+            {
+            case "Labyrint":
+                if (Checkpoint.Counter == 3)
+                {
+                    open = true;
+                }
+                break;
+            }
+
+            if (open) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske med: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
             {
                 Open = true;
                 Symbol = symbolOpen;

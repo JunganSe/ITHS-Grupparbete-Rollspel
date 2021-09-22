@@ -31,7 +31,10 @@ namespace Rollspel
             LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[0];
+            LevelMaker.Labyrint(out name, out message, out lines, out startX, out startY, out activeObjects);
+            CreateLevel(name, message, lines, startX, startY, activeObjects);
+
+            CurrentLevel = Levels[3];
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }

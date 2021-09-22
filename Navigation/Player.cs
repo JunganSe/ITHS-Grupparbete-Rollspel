@@ -58,6 +58,9 @@ namespace Rollspel
                         {
                             break;
                         }
+                case ConsoleKey.NumPad0:
+                    // TODO: meny!
+                    break;
                 }
                 // waits until keys are available again before leaving the method
                 while (Console.KeyAvailable)
@@ -78,10 +81,8 @@ namespace Rollspel
                     MakeMovement(requestedX, requestedY);
                     return true;
                 case 'O': // Potatis
-                    // TODO: plocka upp? menyval
                     return false;
                 case 'N': // Nyckel
-                    // TODO: plocka upp automatiskt
                     MakeMovement(requestedX, requestedY);
                     return true;
                 default:
@@ -93,6 +94,7 @@ namespace Rollspel
         {
             X = newX;
             Y = newY;
+            LevelHandler.CurrentLevel.Steps++;
         }
 
         public static void Kill()

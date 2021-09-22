@@ -177,5 +177,43 @@ namespace Rollspel
             activeObjects.Add(new CatCar(42, 11, 2)); activeObjects.Add(new CatCar(43, 11, 2));
             activeObjects.Add(new CatCar(52, 11, 2)); activeObjects.Add(new CatCar(53, 11, 2));
         }
+
+        public static void Labyrint(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        {
+            name = "Labyrint";
+            message = "Samla 3 poäng genom att ringa på dörrklockorna, och gå sen till utgången.\n" + "Låt bli att gå in i väggarna, och undvik att gå vilse!";
+
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║##########################################################║";
+            lines[02] = @"║       ### ######                 ##############     #####║";
+            lines[03] = @"║###### ##    #### ############### ########       ### #####║";
+            lines[04] = @"║###### ## ## ####       ######### ######## ######### ###  ║";
+            lines[05] = @"║###### ##### ########## ######### ##### ## #########     #║";
+            lines[06] = @"║###### ###      ####### ######### ##### ## ########## ####║";
+            lines[07] = @"║###### ### #### ####### ######### ##### ## ########## ####║";
+            lines[08] = @"║###### ######## #####         ###       ##       #### ####║";
+            lines[09] = @"║######             ##         ############# ####      ####║";
+            lines[10] = @"║################## ##         ############# #### #########║";
+            lines[11] = @"║################## ###### #################    # #########║";
+            lines[12] = @"║###           #### ######               ###### # #########║";
+            lines[13] = @"║### ######### #### ####################             ######║";
+            lines[14] = @"║### #########      #################### ##### ##### ######║";
+            lines[15] = @"║### ############## #################### ##### #####       ║";
+            lines[16] = @"║###         ######                      ##### ############║";
+            lines[17] = @"║########### #################################          ###║";
+            lines[18] = @"║########### ##############################################║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+            startX = 26;  
+            startY = 10; 
+
+            activeObjects = new List<IActiveObject>(); 
+            activeObjects.Add(new Checkpoint(58, 4));
+            activeObjects.Add(new Checkpoint(58, 15));
+            activeObjects.Add(new Checkpoint(1, 2));
+            activeObjects.Add(new Exit(25, 9));
+        }
+
     }
 }
