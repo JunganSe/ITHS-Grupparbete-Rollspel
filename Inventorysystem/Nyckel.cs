@@ -8,8 +8,10 @@ namespace Rollspel
     {
         private int startX;
         private int startY;
+        private char symbol = 'N';
+        private char symbolInvisible = ' ';
 
-        public override char Symbol { get; set; } = 'N';
+        public override char Symbol { get; set; }
         public override int X { get; set; }
         public override int Y { get; set; }
         public override string Name { get; set; } = "Nyckel";
@@ -24,12 +26,20 @@ namespace Rollspel
 
         public override void Use()
         {
-            
+            // TODO: använd för att låsa upp exit.
+        }
+
+        public override void Reset()
+        {
+            X = startX;
+            Y = startY;
+            Symbol = symbol;
+            InInventory = false;
         }
 
         public override void Step()
         {
-            if ((Player.X == X) && (Player.Y == Y))
+            if ((Player.X == X) && (Player.Y == Y) && (!InInventory))
             {
                 PickUp();
             }
@@ -39,13 +49,7 @@ namespace Rollspel
         {
             Inventory.AddToInventory(this);
             InInventory = true;
-        }
-
-        public override void Reset()
-        {
-            X = startX;
-            Y = startY;
-            InInventory = false;
+            Symbol = symbolInvisible;
         }
     }
 }

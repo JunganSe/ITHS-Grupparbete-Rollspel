@@ -12,7 +12,7 @@ namespace Rollspel
         private char symbol = 'O';
         private char symbolInvisible = ' ';
 
-        public override char Symbol { get; set; } = 'O';
+        public override char Symbol { get; set; }
         public override int X { get; set; }
         public override int Y { get; set; }
         public override string Name { get; set; } = "Potatis";
@@ -76,20 +76,12 @@ namespace Rollspel
             }
         }
 
-        private bool CheckFree(int x, int y)
+        public override void Reset()
         {
-            if (LevelHandler.CurrentLevel.Layout[x, y] == ' ')
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private void PickUp()
-        {
-            Inventory.AddToInventory(this);
-            InInventory = true;
-            Symbol = symbolInvisible;
+            X = startX;
+            Y = startY;
+            Symbol = symbol;
+            InInventory = false;
         }
 
         public override void Step()
@@ -100,11 +92,20 @@ namespace Rollspel
             }
         }
 
-        public override void Reset()
+        private void PickUp()
         {
-            X = startX;
-            Y = startY;
-            InInventory = false;
+            Inventory.AddToInventory(this);
+            InInventory = true;
+            Symbol = symbolInvisible;
+        }
+
+        private bool CheckFree(int x, int y)
+        {
+            if (LevelHandler.CurrentLevel.Layout[x, y] == ' ')
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
