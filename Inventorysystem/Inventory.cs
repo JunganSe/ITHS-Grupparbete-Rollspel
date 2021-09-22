@@ -25,7 +25,7 @@ namespace Rollspel
             }
         }
 
-        public static void AddToInventory(int input, Item foundItem)
+        public static void AddToInventory(Item foundItem)
         {
             if (ItemList.Count < 6)
             {

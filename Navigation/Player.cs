@@ -82,7 +82,7 @@ namespace Rollspel
                     // en person som man kan prata med, förflyttningen görs inte men dialog alternativ kommer upp
                     // Talk()
                     return false;
-                case 'J':
+                case 'N':
                     // (Exempel)
                     // genomflyttningen görs och spelaren plockar upp saken:
                     // Inventory.Add("key")
