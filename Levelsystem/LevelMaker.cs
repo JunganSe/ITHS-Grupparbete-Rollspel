@@ -79,7 +79,7 @@ namespace Rollspel
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(58, 2));
             activeObjects.Add(new LawnMower(35, 12, true));
-            activeObjects.Add(new LawnMower(46, 8, false));
+            activeObjects.Add(new LawnMower(46, 8, false)); // TODO: Bug: Denna beter sig konstigt.
         }
 
         public static void Yard(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)

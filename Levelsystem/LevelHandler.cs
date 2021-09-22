@@ -31,9 +31,7 @@ namespace Rollspel
             LevelMaker.Road(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[1];
-            //Player.X = CurrentLevel.StartX; // Temporärt
-            //Player.Y = CurrentLevel.StartY; //
+            CurrentLevel = Levels[0];
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
@@ -57,8 +55,8 @@ namespace Rollspel
 
         public static void Restart()
         {
-            Player.X = CurrentLevel.StartX;
-            Player.Y = CurrentLevel.StartY;
+            PlayerTemp.X = CurrentLevel.StartX;
+            PlayerTemp.Y = CurrentLevel.StartY;
             foreach (var item in CurrentLevel.ActiveObjects)
             {
                 item.Reset();
@@ -125,8 +123,8 @@ namespace Rollspel
             }
 
             // Rita spelaren.
-            Console.SetCursorPosition(AnchorX + Player.X, AnchorY + Player.Y);
-            Console.Write(Player.Symbol);
+            Console.SetCursorPosition(AnchorX + PlayerTemp.X, AnchorY + PlayerTemp.Y);
+            Console.Write(PlayerTemp.Symbol);
 
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)
