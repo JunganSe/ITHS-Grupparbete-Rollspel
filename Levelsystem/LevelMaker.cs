@@ -177,5 +177,40 @@ namespace Rollspel
             activeObjects.Add(new CatCar(42, 11, 2)); activeObjects.Add(new CatCar(43, 11, 2));
             activeObjects.Add(new CatCar(52, 11, 2)); activeObjects.Add(new CatCar(53, 11, 2));
         }
+        public static void LeoTest(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        {
+            name = "Test";
+            message = "Detta är bara en testbana.";
+
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║ E      |                       T           T           N ║";
+            lines[02] = @"║        D                             m                   ║";
+            lines[03] = @"║        |                       . m       m .             ║";
+            lines[04] = @"║---------                     m       m       m           ║";
+            lines[05] = @"║                                  m       m               ║";
+            lines[06] = @"║                              m .     m     . m           ║";
+            lines[07] = @"║            m m m m               m       m               ║";
+            lines[08] = @"║           m m m m m          m       m       m           ║";
+            lines[09] = @"║           m       m              m       m               ║";
+            lines[10] = @"║          m    m    m         m .     m     . m           ║";
+            lines[11] = @"║           m   m   m              m       m               ║";
+            lines[12] = @"║          m    m    m         m       m       m           ║";
+            lines[13] = @"║-----------    m                  m       m               ║";
+            lines[14] = @"║               m              m       m       m           ║";
+            lines[15] = @"║               |                . m       m .             ║";
+            lines[16] = @"║               |              m       m       m           ║";
+            lines[17] = @"║               |                  m       m               ║";
+            lines[18] = @"║  //start      |                      m                   ║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+            startX = 5;
+            startY = 10;
+
+            activeObjects = new List<IActiveObject>();
+            activeObjects.Add(new Exit(1, 1));
+            activeObjects.Add(new Nyckel(60, 1));
+            activeObjects.Add(new Potatis(20, 10));
+        }
     }
 }
