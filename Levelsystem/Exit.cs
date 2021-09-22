@@ -49,7 +49,7 @@ namespace Rollspel
 
         private void CheckPlayerPosition()
         {
-            if ((Open) && (X == Player.X) && (Y == Player.Y))
+            if ((Open) && (X == PlayerTemp.X) && (Y == PlayerTemp.Y))
             {
                 LevelHandler.NextLevel();
             }

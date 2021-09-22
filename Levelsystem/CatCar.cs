@@ -56,9 +56,9 @@ namespace Rollspel
 
         private void CheckPlayerKill()
         {
-            if ((X == Player.X) && (Y == Player.Y))
+            if ((X == PlayerTemp.X) && (Y == PlayerTemp.Y))
             {
-                Player.Kill();
+                PlayerTemp.Kill();
             }
         }
     }

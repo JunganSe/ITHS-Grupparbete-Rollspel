@@ -55,8 +55,8 @@ namespace Rollspel
 
         public static void Restart()
         {
-            Player.X = CurrentLevel.StartX;
-            Player.Y = CurrentLevel.StartY;
+            PlayerTemp.X = CurrentLevel.StartX;
+            PlayerTemp.Y = CurrentLevel.StartY;
             foreach (var item in CurrentLevel.ActiveObjects)
             {
                 item.Reset();
@@ -123,8 +123,8 @@ namespace Rollspel
             }
 
             // Rita spelaren.
-            Console.SetCursorPosition(AnchorX + Player.X, AnchorY + Player.Y);
-            Console.Write(Player.Symbol);
+            Console.SetCursorPosition(AnchorX + PlayerTemp.X, AnchorY + PlayerTemp.Y);
+            Console.Write(PlayerTemp.Symbol);
 
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)

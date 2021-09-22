@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Rollspel
 {
-    public static class Player
+    public static class PlayerTemp
     {
         public static char Symbol { get; set; } = '@';
         public static int X { get; set; } = 30;
