@@ -7,25 +7,16 @@ namespace Rollspel
 {
     public abstract class Item : IActiveObject
     {
-        public int Count = 0;
-
-        public char Symbol { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public string Name { get; set; }
+        public abstract char Symbol { get; set; }
+        public abstract int X { get; set; }
+        public abstract int Y { get; set; }
+        public abstract string Name { get; set; }
 
         public virtual void Use()
         {
             Console.WriteLine("Use this item!");
         }
-
-        public void Step()
-        {
-
-        }
-        public void Reset()
-        {
-
-        }
+        public abstract void Step();
+        public abstract void Reset();
     }
 }

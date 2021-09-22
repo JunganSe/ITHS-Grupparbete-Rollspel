@@ -77,15 +77,11 @@ namespace Rollspel
                 case ' ':
                     MakeMovement(requestedX, requestedY);
                     return true;
-                case 'P':
-                    // (Exempel)
-                    // en person som man kan prata med, förflyttningen görs inte men dialog alternativ kommer upp
-                    // Talk()
+                case 'O': // Potatis
+                    // TODO: plocka upp? menyval
                     return false;
-                case 'N':
-                    // (Exempel)
-                    // genomflyttningen görs och spelaren plockar upp saken:
-                    // Inventory.Add("key")
+                case 'N': // Nyckel
+                    // TODO: plocka upp automatiskt
                     MakeMovement(requestedX, requestedY);
                     return true;
                 default:

@@ -54,20 +54,20 @@ namespace Rollspel
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
             lines[01] = @"║X                   ÖVRE RADEN                            ║";
-            lines[02] = @"║ 1,1           \                                          ║";
+            lines[02] = @"║ 1,1                                                      ║";
             lines[03] = @"║                                                          ║";
             lines[04] = @"║                                                          ║";
-            lines[05] = @"║V                _  ,/|                    QQQQ           ║";
-            lines[06] = @"║Ä               '\`o.O'   _                              H║";
-            lines[07] = @"║N                =(_*_)= (                               Ö║";
-            lines[08] = @"║S                  )U(  _)                               G║";
-            lines[09] = @"║T          P      /   \(                                 E║";
-            lines[10] = @"║E                (/`-'\)                                 R║";
+            lines[05] = @"║V                                                         ║";
+            lines[06] = @"║Ä                                                        H║";
+            lines[07] = @"║N                                                        Ö║";
+            lines[08] = @"║S                                                        G║";
+            lines[09] = @"║T                                                        E║";
+            lines[10] = @"║E                                                        R║";
             lines[11] = @"║R                                           ¤ ¤          K║";
-            lines[12] = @"║K                        ¤                  ¤ ¤          A║";
-            lines[13] = @"║A             \n                                         N║";
-            lines[14] = @"║N        \e                                              T║";
-            lines[15] = @"║T             \t                                          ║";
+            lines[12] = @"║K                                           ¤ ¤          A║";
+            lines[13] = @"║A                                                        N║";
+            lines[14] = @"║N                                                        T║";
+            lines[15] = @"║T                                                         ║";
             lines[16] = @"║                                                          ║";
             lines[17] = @"║                                                   58,18  ║";
             lines[18] = @"║                       NEDRE RADEN                       X║";
@@ -78,7 +78,8 @@ namespace Rollspel
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(58, 2));
-            activeObjects.Add(new LawnMower(35, 12, true));
+            activeObjects.Add(new Nyckel(30, 10));
+            activeObjects.Add(new Potatis(20, 10));
         }
 
         public static void Yard(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)

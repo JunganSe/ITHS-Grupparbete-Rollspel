@@ -14,9 +14,9 @@ namespace Rollspel
     {
         static void Main(string[] args)
         {
-            Inventory.ItemList.Add(new Nyckel() { Name = "nyckel" });
-            Inventory.ItemList.Add(new Nyckel() { Name = "syckel" });
-            Inventory.ItemList.Add(new Nyckel() { Name = "myckel" });
+            //Inventory.ItemList.Add(new Nyckel() { Name = "nyckel" });
+            //Inventory.ItemList.Add(new Nyckel() { Name = "syckel" });
+            //Inventory.ItemList.Add(new Nyckel() { Name = "myckel" });
          
             
             Inventory.PrintInventory();

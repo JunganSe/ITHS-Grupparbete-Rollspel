@@ -6,27 +6,46 @@ namespace Rollspel
 {
     internal class Nyckel : Item
     {
+        private int startX;
+        private int startY;
 
+        public override char Symbol { get; set; } = 'N';
+        public override int X { get; set; }
+        public override int Y { get; set; }
+        public override string Name { get; set; } = "Nyckel";
+        public bool InInventory { get; set; } = false;
 
-
-
-
-
-
-
-        public Nyckel()
+        public Nyckel(int x, int y)
         {
-
-        }
-
-        public Nyckel(string name)
-        {
-            Name = name;
+            startX = x;
+            startY = y;
+            Reset();
         }
 
         public override void Use()
         {
-            Console.WriteLine("Kastar saken!");
+            
+        }
+
+        public override void Step()
+        {
+            if ((Player.X == X) && (Player.Y == Y))
+            {
+                PickUp();
+            }
+        }
+
+        private void PickUp()
+        {
+            Inventory.AddToInventory(this);
+            InInventory = true;
+        }
+
+        public override void Reset()
+        {
+            X = startX;
+            Y = startY;
+            InInventory = false;
         }
     }
 }

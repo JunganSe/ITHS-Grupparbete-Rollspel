@@ -122,16 +122,16 @@ namespace Rollspel
                 Console.Write(line);
             }
 
-            // Rita spelaren.
-            Console.SetCursorPosition(AnchorX + Player.X, AnchorY + Player.Y);
-            Console.Write(Player.Symbol);
-
             // Rita aktiva objekt.
             foreach (var item in level.ActiveObjects)
             {
                 Console.SetCursorPosition(AnchorX + item.X, AnchorY + item.Y);
                 Console.Write(item.Symbol);
             }
+
+            // Rita spelaren.
+            Console.SetCursorPosition(AnchorX + Player.X, AnchorY + Player.Y);
+            Console.Write(Player.Symbol);
 
             // Rita info om banan.
             Console.SetCursorPosition(49, 0);
