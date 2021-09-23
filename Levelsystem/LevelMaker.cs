@@ -49,7 +49,7 @@ namespace Rollspel
         public static void Test(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Test";
-            message = "Detta är bara en testbana.";
+            message = "     Detta är bara en testbana.";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -80,7 +80,7 @@ namespace Rollspel
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(58, 2));
-            activeObjects.Add(new Nyckel(30, 8));
+            activeObjects.Add(new Nyckel(30, 8, true));
             activeObjects.Add(new Potatis(16, 10));
             activeObjects.Add(new Potatis(18, 10));
             activeObjects.Add(new Potatis(20, 10));
@@ -91,12 +91,57 @@ namespace Rollspel
             activeObjects.Add(new Potatis(30, 10));
         }
 
+        public static void Drama(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        {
+            name = "Drama!";
+            message = "     Du vaknar på morgonen och ser att det ligger ett brev instucket under dörren. \n" + 
+                "     Efter att ha halkat på gårdagens utspillda oboy snubblar du fram till brevet\n" +
+                "     och läser det. Det är från Big Jens, han har snott din kastbara råtta och\n" +
+                "     utmanar dig till att komma och hämta den. Inget snack om det, men\n" +
+                "     dörren är låst och nyckeln har fått fötter...";
+
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║   _______                                 o              ║";
+            lines[02] = @"║  |_*_|_*_|                                |              ║";
+            lines[03] = @"║  |       |                          o    ,|.             ║";
+            lines[04] = @"║                                     |  ,' \ `.           ║";
+            lines[05] = @"║                                     |,'\,' ,' `.   o     ║";
+            lines[06] = @"║                    .-===-.          |.`. ,'     `. |     ║";
+            lines[07] = @"║                    | . . |          | `.`.    o  ,'|     ║";
+            lines[08] = @"║                    | .'. |              `.`.  |,'  |     ║";
+            lines[09] = @"║                   ()_____()               `.`.|  ,'|     ║";
+            lines[10] = @"║                   ||_____||                 `.|,'        ║";
+            lines[11] = @"║                    W     W                    |          ║";
+            lines[12] = @"║                                                          ║";
+            lines[13] = @"║                                                          ║";
+            lines[14] = @"║                                                    _     ║";
+            lines[15] = @"║    .-^-.                                          | |    ║";
+            lines[16] = @"║   ´´'|'``                                      ___| |    ║";
+            lines[17] = @"║      j                                       (    .'     ║";
+            lines[18] = @"║                                                )  (      ║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+            //             |        |         |         |         |         |       |
+            //             1        10        20        30        40        50      58
+
+            startX = 48;
+            startY = 4;
+
+            activeObjects = new List<IActiveObject>();
+            activeObjects.Add(new Exit(55, 18));
+            activeObjects.Add(new Nyckel(1, 2, false));
+            activeObjects.Add(new Nyckel(48, 17, false));
+            activeObjects.Add(new Nyckel(22, 11, false));
+        }
+
         public static void Yard(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Trädgård";
-            message = "Du kommer ut ur huset och sätter fötterna på gräsmattan. Flera av grannskapets gräsklippare verkar ha samlats just här.\n" +
-                "De verkar samtala med varandra med ett dovt tomgångsljud. Tvåtaktarna verkar lite upprörda, kanske är det bara åldern\n" +
-                "som gör dem vresiga. Gräsklipparna verkar uppmärksamma att du är här, och närmar sig för att blockera din väg...";
+            message = "     Du kommer ut ur huset och sätter fötterna på gräsmattan. \n" + 
+                "     Flera av grannskapets gräsklippare verkar ha samlats just här. De verkar\n" +
+                "     samtala med varandra med ett dovt tomgångsljud. Tvåtaktarna verkar lite\n" +
+                "     upprörda, kanske är det bara åldern som gör dem vresiga. Gräsklipparna verkar\n" +
+                "     uppmärksamma att du är här, och närmar sig för att blockera din väg...";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -132,21 +177,21 @@ namespace Rollspel
             activeObjects.Add(new Potatis(40, 12));
             activeObjects.Add(new Potatis(48, 17));
             activeObjects.Add(new Potatis(55, 18));
-            activeObjects.Add(new Potatis(22, 10));
             activeObjects.Add(new LawnMower(20, 10, true));
             activeObjects.Add(new LawnMower(34, 8, false));
             activeObjects.Add(new LawnMower(57, 3, true));
             activeObjects.Add(new LawnMower(50, 4, true));
             activeObjects.Add(new LawnMower(45, 16, true));
+            activeObjects.Add(new LawnMower(2, 6, false));
         }
 
         public static void Road(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Väg";
-            message = "Du står vid en väg som är hårt trafikerad av katter.\n" +
-                "Det finns inga övergångsställen eller trafikljus i närheten,\n" +
-                "så du får försöka ta dig över utan att bli påsprungen.\n" +
-                "Eftersom du är lite rädd för väglinjer så känner du att du måste gå mellan dem.";
+            message = "     Du står vid en väg som är hårt trafikerad av katter.\n" +
+                "     Det finns inga övergångsställen eller trafikljus i närheten,\n" +
+                "     så du får försöka ta dig över utan att bli påsprungen.\n" +
+                "     Eftersom du är lite rädd för väglinjer så känner du att du måste gå mellan dem.";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -199,7 +244,8 @@ namespace Rollspel
         public static void Labyrint(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Labyrint";
-            message = "Samla 3 poäng genom att ringa på dörrklockorna, och gå sen till utgången.\n" + "Låt bli att gå in i väggarna, och undvik att gå vilse!";
+            message = "     Samla 3 poäng genom att ringa på dörrklockorna, och gå sen till utgången.\n" +
+                "     Låt bli att gå in i väggarna, och undvik att gå vilse!";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -243,26 +289,26 @@ namespace Rollspel
             // Se till att antalet tecken per rad stämmer med (LevelHandler.Width), och att antal rader stämmer med (LevelHandler.Height).
 
             name = "Minfält";
-            message = "Det ligger ett antal minor på detta fält. Korsa det om du kan! :)";
+            message = "    Det ligger ett antal minor på detta fält. Korsa det om du kan! :)";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
             lines[01] = @"║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║";
-            lines[02] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
-            lines[03] = @"║░░░░░░░░░░▒░░░░░░░░░░░░░░░░░▒░░░░░░░░░▒▒░░░░░░░░▒░░░░░░░░░║";
+            lines[02] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒░░║";
+            lines[03] = @"║░░░░▒▒░░░░▒░░░░░▒▒▒░░░░░░░░░▒░░░░░░░░░▒▒░░░░░░░░▒░░░░░░░░░║";
             lines[04] = @"║░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
-            lines[05] = @"║░▒░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░║";
-            lines[06] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[05] = @"║░▒░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░▒░░░║";
+            lines[06] = @"║░░░░░░░░░░░░▒▒▒░░░░░░░░░░░░░▒░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░║";
             lines[07] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░║";
-            lines[08] = @"║░░░░░░▒░░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░║";
-            lines[09] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░║";
-            lines[10] = @"║░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
-            lines[11] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[08] = @"║░░░░░░▒░░░░▒░░░░░░░░░░░░▒▒░░░░░░░░░░░░░░░▒▒░░░░░░░▒░░░░░░░║";
+            lines[09] = @"║░░░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[10] = @"║░░░░░░░░░░░░░░░░░░░░▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[11] = @"║░░░░░░░░░░░░░░░░░░▒░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
             lines[12] = @"║░░░░░░░░░░░░▒░░░░░░░░░░░░░░░░░░░▒░░░░░░░░▒░░░░░░░░░░░░░▒░░║";
-            lines[13] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
-            lines[14] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[13] = @"║░░░░░▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒░░░░░░░░░░░░░║";
+            lines[14] = @"║░░░░░░░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
             lines[15] = @"║░░░░▒░░░░░░░░░░░░░░░▒░░░░░░░▒░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░║";
-            lines[16] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
+            lines[16] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒░░░░░░░░░░░░░░░░░▒▒░░░░░░░║";
             lines[17] = @"║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║";
             lines[18] = @"║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
@@ -297,7 +343,7 @@ namespace Rollspel
             activeObjects.Add(new Boom(15, 9));
             activeObjects.Add(new Boom(18, 11));
             activeObjects.Add(new Boom(3, 16));
-            activeObjects.Add(new Boom(6, 18));
+            activeObjects.Add(new Boom(6, 17));
             activeObjects.Add(new Boom(8, 9));
             activeObjects.Add(new Boom(10, 11));
             activeObjects.Add(new Boom(14, 8));
@@ -305,6 +351,55 @@ namespace Rollspel
             activeObjects.Add(new Boom(27, 4));
             activeObjects.Add(new Boom(28, 3));
 
+        }
+        public static void Ending(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        {
+            name = "Slutet";
+            if (Player.Bonks < 20)
+            {
+                message = "     Du hittar Big Jens, han kastar råttan mot dig i ren förskräckelse.\n" +
+                    "     Du fångar den graciöst med pannan och kelar lite med den,\n" +
+                    "     sedan vandrar ni hemåt tillsammans.";
+            }
+            else
+            {
+                message = "     Du hittar Big Jens, han kastar råttan mot dig i ren förskräckelse.\n" +
+                    "     Den landar på ditt huvud. Dock har du för många bulor i huvet för att\n" +
+                    "     råttan ska känna igen dig. Den biter dig och springer iväg.\n" +
+                    "     Du kommer på att du aldrig gillat den där råttan\n" +
+                    "     särskilt mycket från början och går hem.";
+            }
+            
+
+            lines = new string[LevelHandler.Height];
+            lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+            lines[01] = @"║                                                          ║";
+            lines[02] = @"║                                                          ║";
+            lines[03] = @"║                                                          ║";
+            lines[04] = @"║                                                          ║";
+            lines[05] = @"║                                                          ║";
+            lines[06] = @"║╧╤|                                                       ║";
+            lines[07] = @"║╤╧| __                                                    ║";
+            lines[08] = @"║╧╤|·.·)                                                   ║";
+            lines[09] = @"║╤╧|c /                                                    ║";
+            lines[10] = @"║╧╤|                                                       ║";
+            lines[11] = @"║                                                          ║";
+            lines[12] = @"║     __QQ                                                 ║";
+            lines[13] = @"║    (_)_"">                                                ║";
+            lines[14] = @"║   _)                                                     ║";
+            lines[15] = @"║                                                          ║";
+            lines[16] = @"║                                                          ║";
+            lines[17] = @"║                                                          ║";
+            lines[18] = @"║                                                          ║";
+            lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+            //             |        |         |         |         |         |       |
+            //             1        10        20        30        40        50      58
+
+            startX = 32; 
+            startY = 15; 
+
+            activeObjects = new List<IActiveObject>();
+            activeObjects.Add(new Exit(1, 1));
         }
 
 

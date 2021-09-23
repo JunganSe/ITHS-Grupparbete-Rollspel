@@ -17,7 +17,7 @@ namespace Rollspel
 
             Inventory.PrintInventory();
 
-            // Console.CursorVisible = false;
+            Console.CursorVisible = false;
             var cc = new ConsoleCompanion();
 
             LevelHandler.Initialize();
@@ -70,7 +70,7 @@ namespace Rollspel
                 for (int j = 0; j < width; j++)
                 {
                     Console.SetCursorPosition(x + j, y + i);
-                    Console.Write(" ");
+                    Console.Write("*");
                 }
             }
         }

@@ -41,6 +41,7 @@ namespace Rollspel
                             X = Player.X;
                             Y = Player.Y - 1;
                             Symbol = symbol;
+                            Inventory.ItemList.Remove(this);
 
                         }
                         else
@@ -56,6 +57,7 @@ namespace Rollspel
                             X = Player.X;
                             Y = Player.Y + 1;
                             Symbol = symbol;
+                            Inventory.ItemList.Remove(this);
                         }
                         else
                         {
@@ -70,6 +72,8 @@ namespace Rollspel
                             X = Player.X - 1;
                             Y = Player.Y;
                             Symbol = symbol;
+                            Inventory.ItemList.Remove(this);
+
                         }
                         else
                         {
@@ -84,6 +88,7 @@ namespace Rollspel
                             X = Player.X + 1;
                             Y = Player.Y;
                             Symbol = symbol;
+                            Inventory.ItemList.Remove(this);
                         }
                         else
                         {
@@ -96,6 +101,8 @@ namespace Rollspel
                         return;
                 }
             }
+            Program.DrawEmpty(Inventory.AnchorX, Inventory.AnchorY, Inventory.Width - 2, Inventory.Height - 2);
+            Inventory.PrintInventory();
             Program.DrawEmpty(InteractiveMenu.AnchorX, InteractiveMenu.AnchorY, InteractiveMenu.MenuWidth - 2, InteractiveMenu.MenuHeight - 2);
             LevelHandler.DrawLevel(LevelHandler.CurrentLevel);
         }

@@ -36,7 +36,7 @@ namespace Rollspel
 
         public void PointCounter()
         {
-            if ((X == Player.X - 1 || X == Player.X + 1) && (Y == Player.Y))
+            if ((X == Player.X - 1 || X == Player.X + 1) && (Y == Player.Y) && (Symbol != symbolTaken))
             {
                 Symbol = symbolTaken;
                 Counter++;

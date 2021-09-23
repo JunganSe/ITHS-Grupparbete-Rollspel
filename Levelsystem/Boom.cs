@@ -7,7 +7,7 @@ namespace Rollspel
 {
     public class Boom : IActiveObject
     {
-        public char Symbol { get; set; } = '*';
+        public char Symbol { get; set; } = '░';
         public char SymbolInvisible { get; set; }
         public int X { get; set; }
         public int Y { get; set; }

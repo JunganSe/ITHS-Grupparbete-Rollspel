@@ -8,6 +8,7 @@ namespace Rollspel
     {
         private int startX;
         private int startY;
+        private bool startVisible;
         private char symbol = 'N';
         private char symbolInvisible = ' ';
 
@@ -18,32 +19,37 @@ namespace Rollspel
         public override string Name { get; set; } = "Nyckel";
         public bool InInventory { get; set; } = false;
 
-        public Nyckel(int x, int y)
+        public Nyckel(int x, int y, bool visible)
         {
             startX = x;
             startY = y;
+            startVisible = visible;
             Reset();
         }
 
         public override void Use()
         {
-            // TODO: använd för att låsa upp exit.
+            
         }
 
         public override void Reset()
         {
             X = startX;
             Y = startY;
-            Symbol = symbol;
+            if (startVisible)
+            {
+                Symbol = symbol;
+            }
+            else
+            {
+                Symbol = symbolInvisible; 
+            }
             InInventory = false;
         }
 
         public override void Step()
         {
-            if ((Player.X == X) && (Player.Y == Y) && (!InInventory))
-            {
-                PickUp();
-            }
+            CheckFind();
         }
 
         private void PickUp()
@@ -52,5 +58,17 @@ namespace Rollspel
             InInventory = true;
             Symbol = symbolInvisible;
         }
+        public void CheckFind() { 
+
+        if ((!InInventory)
+            && ((X == Player.X + 1 && Y == Player.Y) 
+            || (X == Player.X - 1 && Y == Player.Y) 
+            || (X == Player.X && Y == Player.Y + 1) 
+            || (X == Player.X && Y == Player.Y - 1)))
+            {
+                PickUp();
+            }
+        }
+
     }
 }

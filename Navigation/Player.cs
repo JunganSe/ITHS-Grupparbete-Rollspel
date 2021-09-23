@@ -8,7 +8,7 @@ namespace Rollspel
         public static int X { get; set; }
         public static int Y { get; set; }
         public static char Symbol { get; set; } = '@';
-        public static int Bonks { get; set; } = 0; // how many times the Player walked into the wall
+        public static int Bonks { get; set; } = 100; // how many times the Player walked into the wall
 
         public static void GetInput()
         {
@@ -93,6 +93,7 @@ namespace Rollspel
                     return true;
 
                 default:
+                    Bonks++;
                     return false;
             }
         }
@@ -101,6 +102,7 @@ namespace Rollspel
         {
             X = newX;
             Y = newY;
+            Program.DrawEmpty(InteractiveMenu.AnchorX, InteractiveMenu.AnchorY, InteractiveMenu.MenuWidth - 2, InteractiveMenu.MenuHeight - 2);
             LevelHandler.CurrentLevel.Steps++;
             LevelHandler.Step();
         }
@@ -109,10 +111,10 @@ namespace Rollspel
         {
             // TODO: Någon visuell effekt?
             // Kod som körs när spelaren dör.
-            Console.SetCursorPosition(LevelHandler.AnchorX + LevelHandler.Width - 7, LevelHandler.AnchorY - 0);
+            Console.SetCursorPosition(InteractiveMenu.AnchorX + 2, InteractiveMenu.AnchorY + 2);
             Console.WriteLine("Du dog!");
-            Thread.Sleep(500);
-            Console.SetCursorPosition(LevelHandler.AnchorX, 0);
+            Thread.Sleep(1000);
+            Console.SetCursorPosition(InteractiveMenu.AnchorX + 2, InteractiveMenu.AnchorY + 2);
             Console.WriteLine("       ");
 
             LevelHandler.Restart();

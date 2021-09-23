@@ -40,6 +40,15 @@
             bool open = false;
             switch (LevelHandler.CurrentLevel.Name)
             {
+                case "Drama!":
+                    foreach (var item in Inventory.ItemList)
+                    {
+                        if (item.Name == "Nyckel")
+                        {
+                            open = true;
+                        }
+                    }
+                    break;
                 case "Test":
                     open = true;
                     break;

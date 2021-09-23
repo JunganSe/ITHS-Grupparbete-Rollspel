@@ -15,9 +15,9 @@ namespace Rollspel
             Nothing
         }
 
-        public static int AnchorX { get; set; } = 3;
-        public static int AnchorY { get; set; } = 27;
-        public static int MenuWidth { get; set; } = 80;
+        public static int AnchorX { get; set; } = 4;
+        public static int AnchorY { get; set; } = 29;
+        public static int MenuWidth { get; set; } = 81;
         public static int MenuHeight { get; set; } = 15;
         public string Message { get; set; }
         public Uses Do { get; set; }
