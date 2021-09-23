@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Rollspel
 {
-    static class Player
+    internal static class Player
     {
         public static int X { get; set; }
         public static int Y { get; set; }
@@ -19,7 +15,7 @@ namespace Rollspel
             // Look for input until legal input is provided
             while (true)
             {
-                ConsoleKeyInfo input = Console.ReadKey();
+                ConsoleKeyInfo input = Console.ReadKey(true);
                 switch (input.Key)
                 {
                     case ConsoleKey.LeftArrow:
@@ -30,7 +26,7 @@ namespace Rollspel
                         else
                         {
                             break;
-                        }                       
+                        }
                     case ConsoleKey.RightArrow:
                         if (TryToMove(X + 1, Y))
                         {
@@ -58,9 +54,10 @@ namespace Rollspel
                         {
                             break;
                         }
-                case ConsoleKey.NumPad0:
-                    // TODO: meny!
-                    break;
+                    case ConsoleKey.Spacebar:
+                        Inventory.UseInventoryItem();
+                        return;
+
                 }
                 // waits until keys are available again before leaving the method
                 while (Console.KeyAvailable)
@@ -80,11 +77,18 @@ namespace Rollspel
                 case ' ':
                     MakeMovement(requestedX, requestedY);
                     return true;
+
+                case '░': //Minfält
+                    MakeMovement(requestedX, requestedY);
+                    return true;
+
                 case 'O': // Potatis
                     return false;
+
                 case 'N': // Nyckel
                     MakeMovement(requestedX, requestedY);
                     return true;
+
                 default:
                     return false;
             }

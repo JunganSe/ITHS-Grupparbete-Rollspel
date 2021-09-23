@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Enum
+namespace Rollspel
 {
     public class InteractiveMenu
     {
@@ -15,6 +15,8 @@ namespace Enum
             Nothing
         }
 
+        public static int AnchorX { get; set; } = 3;
+        public static int AnchorY { get; set; } = 25;
         public string Message { get; set; }
         public Uses Do { get; set; }
 
@@ -24,15 +26,17 @@ namespace Enum
             Do = use;
         }
 
-        public void PrintChoices(Dictionary<string, Uses> choices)
+        public void PrintChoices(Dictionary<string, Uses> choices, Item selecteditem)
         {
-            while (true)
+            bool stop = false;
+            while (!stop)
             {
                 int counter = 0;
                 foreach (var item in choices)
                 {
                     counter++;
-                    Console.WriteLine(counter + ". " + item.Key + " " + item.Value);
+                    Console.SetCursorPosition(AnchorX, AnchorY);
+                    Console.WriteLine(counter + ". " + item.Key);
                 }
 
                 Regex rx = new Regex(@"[1-3]");
@@ -45,6 +49,7 @@ namespace Enum
                 }
                 else
                 {
+                    Console.SetCursorPosition(AnchorX, AnchorY + 1);
                     Console.WriteLine("Felaktig inmatning! Välj mellan 1 och 3.");
                     continue;
                 }
@@ -52,6 +57,7 @@ namespace Enum
                 switch (choices.ElementAt(userChoiceInt - 1).Value)
                 {
                     case Uses.Nothing:
+                        Console.SetCursorPosition(AnchorX, AnchorY + 2);
                         Console.WriteLine($"Du kan inte {choices.ElementAt(userChoiceInt - 1).Key.ToLower()} här.");
                         continue;
 
@@ -65,11 +71,18 @@ namespace Enum
                         break;
 
                     case Uses.Kick:
-                        // Kod för att sparka
-                        break;
-                }
-            }
 
+                        selecteditem.Use();
+
+                        stop = true;
+
+
+                        break;
+
+
+                }
+
+            }
         }
     }
 }

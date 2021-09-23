@@ -43,7 +43,13 @@ namespace Rollspel
             }
             else
             {
-                Console.WriteLine($"Du har redan {ItemList.Count} saker i din ryggsäck, \ndu kan inte plocka upp fler. Vill du kasta något annat?");
+                Console.SetCursorPosition(AnchorX, AnchorY + 10);
+                Console.WriteLine($"Du har redan {ItemList.Count} saker i din ryggsäck,");
+                Console.SetCursorPosition(AnchorX, AnchorY + 11);
+                Console.WriteLine($"du kan inte plocka upp fler.");
+                Console.SetCursorPosition(AnchorX, AnchorY + 12);
+                Console.WriteLine("Vill du kasta något annat?");
+
                 int answer = int.Parse(Console.ReadLine());
                 if (answer == 1)
                 {
@@ -51,6 +57,7 @@ namespace Rollspel
                 }
                 else
                 {
+                    Console.SetCursorPosition(AnchorX, AnchorY + 13);
                     Console.WriteLine("Prylen kastas i närmsta dike!");
                 }
             }
@@ -75,13 +82,27 @@ namespace Rollspel
 
         public static void UseInventoryItem()
         {
+            Console.SetCursorPosition(InteractiveMenu.AnchorX, InteractiveMenu.AnchorY - 1);
             Console.WriteLine("Vilken av dina saker vill du hantera? Ange siffra för respektive objekt");
             int itemToHandle = int.Parse(Console.ReadLine());
+            Item selectedItem;
 
             if (itemToHandle > 0)
             {
 
-                ItemList[itemToHandle - 1].Use();
+                //ItemList[itemToHandle - 1].Use();
+                selectedItem = ItemList[itemToHandle - 1];
+
+                if (selectedItem.Name == "Potatis")
+                {
+                    InteractiveMenu potatisMeny = new InteractiveMenu("Vad vill du göra med potatisen?", InteractiveMenu.Uses.Kick);
+                    Console.WriteLine("Välj siffra för det alternativ du vill ha");
+                    var dictionary = new Dictionary<string, InteractiveMenu.Uses> { { "Lägga ut den", InteractiveMenu.Uses.Kick } };
+                    potatisMeny.PrintChoices(dictionary, selectedItem);
+
+                }
+
+
             }
             else
             {

@@ -27,51 +27,71 @@ namespace Rollspel
 
         public override void Use()
         {
-            Console.WriteLine("Kastar saken!");
+            Console.WriteLine("Tryck på piltangenterna för att välja riktning");
             bool canPlace = false;
             while (!canPlace)
             {
                 switch (Console.ReadKey(true).Key)
                 {
-                case ConsoleKey.UpArrow:
-                    if (CheckFree(Player.X, Player.Y - 1))
-                    {
-                        canPlace = true;
-                        X = Player.X;
-                        Y = Player.Y - 1;
-                        Symbol = symbol;
-                    }
-                    break;
-                case ConsoleKey.DownArrow:
-                    if (CheckFree(Player.X, Player.Y + 1))
-                    {
-                        canPlace = true;
-                        X = Player.X;
-                        Y = Player.Y + 1;
-                        Symbol = symbol;
-                    }
-                    break;
-                case ConsoleKey.LeftArrow:
-                    if (CheckFree(Player.X - 1, Player.Y))
-                    {
-                        canPlace = true;
-                        X = Player.X - 1;
-                        Y = Player.Y;
-                        Symbol = symbol;
-                    }
-                    break;
-                case ConsoleKey.RightArrow:
-                    if (CheckFree(Player.X + 1, Player.Y))
-                    {
-                        canPlace = true;
-                        X = Player.X + 1;
-                        Y = Player.Y;
-                        Symbol = symbol;
-                    }
-                    break;
-                case ConsoleKey.Escape:
-                    // avbryt
-                    return;
+                    case ConsoleKey.UpArrow:
+                        if (CheckFree(Player.X, Player.Y - 1))
+                        {
+                            canPlace = true;
+                            X = Player.X;
+                            Y = Player.Y - 1;
+                            Symbol = symbol;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Platsen upptagen");
+                        }
+                        break;
+
+                    case ConsoleKey.DownArrow:
+                        if (CheckFree(Player.X, Player.Y + 1))
+                        {
+                            canPlace = true;
+                            X = Player.X;
+                            Y = Player.Y + 1;
+                            Symbol = symbol;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Platsen upptagen");
+                        }
+                        break;
+
+                    case ConsoleKey.LeftArrow:
+                        if (CheckFree(Player.X - 1, Player.Y))
+                        {
+                            canPlace = true;
+                            X = Player.X - 1;
+                            Y = Player.Y;
+                            Symbol = symbol;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Platsen upptagen");
+                        }
+                        break;
+
+                    case ConsoleKey.RightArrow:
+                        if (CheckFree(Player.X + 1, Player.Y))
+                        {
+                            canPlace = true;
+                            X = Player.X + 1;
+                            Y = Player.Y;
+                            Symbol = symbol;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Platsen upptagen");
+                        }
+                        break;
+
+                    case ConsoleKey.Escape:
+                        // avbryt
+                        return;
                 }
             }
         }

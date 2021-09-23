@@ -16,7 +16,9 @@ namespace Rollspel
         {
             Console.WriteLine("Use this item!");
         }
+
         public abstract void Step();
+
         public abstract void Reset();
     }
 }

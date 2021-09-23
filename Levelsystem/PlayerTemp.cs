@@ -16,18 +16,21 @@ namespace Rollspel
         {
             switch (Console.ReadKey(true).Key)
             {
-            case ConsoleKey.LeftArrow:
-                X -= 1;
-                break;
-            case ConsoleKey.RightArrow:
-                X += 1;
-                break;
-            case ConsoleKey.UpArrow:
-                Y -= 1;
-                break;
-            case ConsoleKey.DownArrow:
-                Y += 1;
-                break;
+                case ConsoleKey.LeftArrow:
+                    X -= 1;
+                    break;
+
+                case ConsoleKey.RightArrow:
+                    X += 1;
+                    break;
+
+                case ConsoleKey.UpArrow:
+                    Y -= 1;
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    Y += 1;
+                    break;
             }
 
             // Tömmer bufferten. Tar bort skridskokänslan.

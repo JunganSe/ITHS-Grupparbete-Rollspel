@@ -5,17 +5,15 @@ using System.Text;
 
 namespace Rollspel
 {
-    public class Checkpoint : IActiveObject
+    public class Boom : IActiveObject
     {
-        public static int Counter;
-        private char symbol = 'o';
-        private char symbolTaken = 'x';
+        private char symbol = '*';
 
         public char Symbol { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Checkpoint(int x, int y)
+        public Boom(int x, int y)
         {
             X = x;
             Y = y;
@@ -25,21 +23,24 @@ namespace Rollspel
         public void Reset()
         {
             Symbol = symbol;
-            Counter = 0;
+
         }
 
         public void Step()
         {
-            PointCounter();
+            CheckPlayerKill();
         }
 
-        public void PointCounter()
+
+        private void CheckPlayerKill()
         {
-            if ((X == Player.X - 1 || X == Player.X + 1) && (Y == Player.Y))
+            if ((X == Player.X) && (Y == Player.Y))
             {
-                Symbol = symbolTaken;
-                Counter++;
+                Player.Kill();
             }
         }
+
+
+
     }
 }

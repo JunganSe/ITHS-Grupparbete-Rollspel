@@ -51,6 +51,10 @@
                     open = true;
                     break;
 
+                case "Minfält":
+                    open = true;
+                    break;
+
                 case "Labyrint":
                     if (Checkpoint.Counter == 3)
                     {

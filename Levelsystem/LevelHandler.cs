@@ -21,8 +21,8 @@ namespace Rollspel
             int startX, startY;
             List<IActiveObject> activeObjects;
 
-            //LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
-            //CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+            LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
+            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
             LevelMaker.Yard(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
@@ -33,7 +33,10 @@ namespace Rollspel
             LevelMaker.Labyrint(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[0]; // Sätt första banan som startbana.
+            LevelMaker.Minor(out name, out message, out lines, out startX, out startY, out activeObjects);
+            CreateLevel(name, message, lines, startX, startY, activeObjects);
+
+            CurrentLevel = Levels[4]; // Sätt första banan som startbana.
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
@@ -44,7 +47,7 @@ namespace Rollspel
             if (CurrentLevel != Levels[Levels.Count - 1])
             {
                 CurrentLevel = Levels[Levels.IndexOf(CurrentLevel) + 1];
-                //Console.Clear();
+                Console.Clear();
                 Restart();
             }
             else
