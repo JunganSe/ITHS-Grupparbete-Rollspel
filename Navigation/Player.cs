@@ -101,7 +101,7 @@ namespace Rollspel
         {
             // TODO: Någon visuell effekt?
             // Kod som körs när spelaren dör.
-            Console.SetCursorPosition(LevelHandler.AnchorX, 0); // Temp
+            Console.SetCursorPosition(LevelHandler.AnchorX + LevelHandler.Width - 7, LevelHandler.AnchorY - 0); // Temp
             Console.WriteLine("Du dog!");                       //
             Thread.Sleep(500);                                  //
             Console.SetCursorPosition(LevelHandler.AnchorX, 0); //

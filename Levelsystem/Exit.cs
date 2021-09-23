@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rollspel
+﻿namespace Rollspel
 {
-    class Exit : IActiveObject
+    internal class Exit : IActiveObject
     {
         private char symbolOpen = 'E';
         private char symbolClosed = 'e';
@@ -43,15 +39,27 @@ namespace Rollspel
             bool open = false;
             switch (LevelHandler.CurrentLevel.Name)
             {
-            case "Labyrint":
-                if (Checkpoint.Counter == 3)
-                {
+                case "Test":
                     open = true;
-                }
-                break;
+                    break;
+
+                case "Trädgård":
+                    open = true;
+                    break;
+
+                case "Väg":
+                    open = true;
+                    break;
+
+                case "Labyrint":
+                    if (Checkpoint.Counter == 3)
+                    {
+                        open = true;
+                    }
+                    break;
             }
 
-            if (open) // TODO: Kontrollera om banans villkor är uppfyllt. Men hur? Kanske med: if (LevelHandler.CurrentLevel.Name == "namn på bana") osv...
+            if (open)
             {
                 Open = true;
                 Symbol = symbolOpen;

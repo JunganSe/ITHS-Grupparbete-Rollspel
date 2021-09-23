@@ -10,6 +10,9 @@ namespace Rollspel
     {
         public static List<Item> ItemList = new List<Item>();
 
+        public static int AnchorX { get; set; } = 80;
+        public static int AnchorY { get; set; } = 1;
+
         public static List<Item> GetList()
         {
             return ItemList;
@@ -17,9 +20,13 @@ namespace Rollspel
 
         public static void PrintInventory()
         {
-            Console.WriteLine("******************");
+            Program.DrawFrame(AnchorX, AnchorY, 20, 8);
+            Console.SetCursorPosition(AnchorX + 5, AnchorY - 1);
+            Console.WriteLine("Inventory");
+
             for (int i = 0; i < ItemList.Count; i++)
             {
+                Console.SetCursorPosition(AnchorX + 1, AnchorY + i + 1);
                 int index = i + 1;
                 Console.WriteLine($"*{index}. {ItemList[i].Name}");
             }
@@ -30,12 +37,13 @@ namespace Rollspel
             if (ItemList.Count < 6)
             {
                 ItemList.Add(foundItem);
+                Console.SetCursorPosition(AnchorX, AnchorY + 8);
                 Console.WriteLine($"Lagt {foundItem.Name} i ryggsäcken!");
                 PrintInventory();
             }
             else
             {
-                Console.WriteLine($"Du har redan {ItemList.Count} saker i din ryggsäck, du kan inte plocka upp fler. Vill du kasta något annat?");
+                Console.WriteLine($"Du har redan {ItemList.Count} saker i din ryggsäck, \ndu kan inte plocka upp fler. Vill du kasta något annat?");
                 int answer = int.Parse(Console.ReadLine());
                 if (answer == 1)
                 {

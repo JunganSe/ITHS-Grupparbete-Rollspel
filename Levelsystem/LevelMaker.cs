@@ -116,12 +116,19 @@ namespace Rollspel
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(58, 1));
-            activeObjects.Add(new LawnMower(35, 12, true));
-            activeObjects.Add(new LawnMower(35, 14, true));
-            activeObjects.Add(new LawnMower(35, 16, true));
-            activeObjects.Add(new LawnMower(15, 10, false));
-            activeObjects.Add(new LawnMower(18, 10, false));
-            activeObjects.Add(new LawnMower(21, 10, false));
+            //activeObjects.Add(new LawnMower(35, 12, true));
+            //activeObjects.Add(new LawnMower(35, 14, true));
+            //activeObjects.Add(new LawnMower(35, 16, true));
+            //activeObjects.Add(new LawnMower(15, 10, false));
+            //activeObjects.Add(new LawnMower(18, 10, false));
+            //activeObjects.Add(new LawnMower(21, 10, false));
+            activeObjects.Add(new Potatis(25, 16));
+            activeObjects.Add(new Potatis(26, 15));
+            activeObjects.Add(new Potatis(20, 12));
+            activeObjects.Add(new Potatis(16, 16));
+            activeObjects.Add(new Potatis(17, 16));
+            activeObjects.Add(new Potatis(15, 16));
+            activeObjects.Add(new Potatis(10, 16));
         }
 
         public static void Road(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
@@ -205,10 +212,10 @@ namespace Rollspel
             lines[18] = @"║########### ##############################################║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
 
-            startX = 26;  
-            startY = 10; 
+            startX = 26;
+            startY = 10;
 
-            activeObjects = new List<IActiveObject>(); 
+            activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Checkpoint(58, 4));
             activeObjects.Add(new Checkpoint(58, 15));
             activeObjects.Add(new Checkpoint(1, 2));

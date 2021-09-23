@@ -9,21 +9,21 @@ using System.Text.Json.Serialization;
 using System.IO;
 
 namespace Rollspel
-{ 
-    class Program
+{
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //Inventory.ItemList.Add(new Nyckel() { Name = "nyckel" });
             //Inventory.ItemList.Add(new Nyckel() { Name = "syckel" });
             //Inventory.ItemList.Add(new Nyckel() { Name = "myckel" });
-         
-            
+
+
             Inventory.PrintInventory();
 
             // Console.CursorVisible = false;
             var cc = new ConsoleCompanion();
-          
+
             LevelHandler.Initialize();
             while (true)
             {
@@ -34,7 +34,7 @@ namespace Rollspel
 
         }
 
-        static void DrawFrame(int x, int y, int width, int height)
+        public static void DrawFrame(int x, int y, int width, int height)
         {
             char cornerTL = '╔', cornerTR = '╗', cornerBL = '╚', cornerBR = '╝', hor = '═', ver = '║';
             string line = "";

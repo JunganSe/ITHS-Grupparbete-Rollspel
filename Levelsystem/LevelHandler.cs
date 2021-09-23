@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Rollspel
 {
@@ -10,7 +9,7 @@ namespace Rollspel
         public static Level CurrentLevel { get; set; }
         public static int Width { get; } = 60; // Banans bredd.
         public static int Height { get; } = 20; // Banans höjd.
-        public static int AnchorX { get; } = 30; // Sidoförskjutning när banan ritas.
+        public static int AnchorX { get; } = 15; // Sidoförskjutning när banan ritas.
         public static int AnchorY { get; } = 1; // Höjdförskjutning när banan ritas.
 
         // Körs en gång när spelet startar.
@@ -22,8 +21,8 @@ namespace Rollspel
             int startX, startY;
             List<IActiveObject> activeObjects;
 
-            LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
-            CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
+            //LevelMaker.Test(out name, out message, out lines, out startX, out startY, out activeObjects); // Skapa data utfrån LevelMaker.
+            //CreateLevel(name, message, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
             LevelMaker.Yard(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
@@ -34,7 +33,7 @@ namespace Rollspel
             LevelMaker.Labyrint(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[3];
+            CurrentLevel = Levels[0]; // Sätt första banan som startbana.
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
@@ -45,7 +44,7 @@ namespace Rollspel
             if (CurrentLevel != Levels[Levels.Count - 1])
             {
                 CurrentLevel = Levels[Levels.IndexOf(CurrentLevel) + 1];
-                Console.Clear();
+                //Console.Clear();
                 Restart();
             }
             else
@@ -94,17 +93,19 @@ namespace Rollspel
             }
 
             // Skapa en ny bana och skicka in datan.
-            Level level = new Level {
+            Level level = new Level
+            {
                 Name = name,
                 Message = message,
-                Layout = sendLayout, 
-                StartX = startX, 
+                Layout = sendLayout,
+                StartX = startX,
                 StartY = startY,
-                ActiveObjects = new List<IActiveObject>(activeObjects) };
+                ActiveObjects = new List<IActiveObject>(activeObjects)
+            };
 
             // Lägg till banan i listan med alla banor.
             Levels.Add(level);
-            
+
             return level;
         }
 
@@ -137,7 +138,7 @@ namespace Rollspel
             Console.Write(Player.Symbol);
 
             // Rita info om banan.
-            Console.SetCursorPosition(49, 0);
+            Console.SetCursorPosition(AnchorX + 18, AnchorY - 1);
             Console.Write($"Bana: {level.Name}    Steg: {level.Steps}");
 
             // Skriv ut banans meddelande.
