@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Rollspel
 {
@@ -42,7 +43,7 @@ namespace Rollspel
             LevelMaker.Ending(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[0]; // Sätt första banan som startbana.
+            CurrentLevel = Levels[1]; // Sätt första banan som startbana.
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
@@ -59,9 +60,10 @@ namespace Rollspel
             }
             else
             {
-                // TODO: Klara spelet!
                 Console.SetCursorPosition(InteractiveMenu.AnchorX + 2, InteractiveMenu.AnchorY + 1);
                 Console.WriteLine("Du klarade spelet!");
+                Thread.Sleep(1000);
+                Program.quit = true;
             }
         }
 
@@ -69,6 +71,8 @@ namespace Rollspel
         {
             Player.X = CurrentLevel.StartX;
             Player.Y = CurrentLevel.StartY;
+            Inventory.ItemList.Clear();
+            Program.DrawEmpty(Inventory.AnchorX, Inventory.AnchorY, Inventory.Width - 2, Inventory.Height - 2);
             Inventory.PrintInventory();
             Program.DrawFrame(InteractiveMenu.AnchorX - 1, InteractiveMenu.AnchorY - 1, InteractiveMenu.MenuWidth, InteractiveMenu.MenuHeight);
             foreach (var item in CurrentLevel.ActiveObjects)
@@ -151,7 +155,7 @@ namespace Rollspel
 
             // Rita info om banan.
             Console.SetCursorPosition(AnchorX + 11, AnchorY - 1);
-            Console.Write($"Bana: {level.Name}    Steg: {level.Steps}    Bulor: {Player.Bonks}");
+            Console.Write($"Bana: {level.Name}    Steg: {level.Steps}    Bonks: {Player.Bonks}");
 
             // Skriv ut banans meddelande.
             Console.SetCursorPosition(0, AnchorY + Height + 1);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rollspel
+﻿namespace Rollspel
 {
     public class LawnMower : IActiveObject // TODO: Bug: Ibland efter reset rör den sig ett steg tidigare än normalt.
     {
@@ -53,12 +49,12 @@ namespace Rollspel
                 }
             }
             if (((Horizontal) && (X < Player.X) && (CheckFree(X + 1, Y)))
-                || ((!Horizontal) && (Y < Player.Y) && (CheckFree(Y + 1, Y))))
+                || ((!Horizontal) && (Y < Player.Y) && (CheckFree(X, Y + 1))))
             {
                 nextMove = 1;
             }
             else if (((Horizontal) && (X > Player.X) && (CheckFree(X - 1, Y)))
-                || ((!Horizontal) && (Y > Player.Y) && (CheckFree(Y - 1, Y))))
+                || ((!Horizontal) && (Y > Player.Y) && (CheckFree(X, Y - 1))))
             {
                 nextMove = -1;
             }
@@ -90,7 +86,6 @@ namespace Rollspel
             {
                 return true;
             }
-
             return false;
         }
     }

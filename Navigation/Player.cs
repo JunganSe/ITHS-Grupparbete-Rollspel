@@ -8,7 +8,7 @@ namespace Rollspel
         public static int X { get; set; }
         public static int Y { get; set; }
         public static char Symbol { get; set; } = '@';
-        public static int Bonks { get; set; } = 100; // how many times the Player walked into the wall
+        public static int Bonks { get; set; } = 0; // how many times the Player walked into the wall
 
         public static void GetInput()
         {

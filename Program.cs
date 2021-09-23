@@ -1,30 +1,21 @@
 using System;
-using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
 
 namespace Rollspel
 {
     internal class Program
     {
+        public static bool quit = false;
         private static void Main(string[] args)
         {
 
             Inventory.PrintInventory();
 
             Console.CursorVisible = false;
-            var cc = new ConsoleCompanion();
 
             LevelHandler.Initialize();
-            while (true)
+            while (!quit)
             {
                 Player.GetInput();
-                //LevelHandler.Step(); // TODO: Gör så att denna bara körs om spelaren flyttar sig.
             }
 
 
@@ -67,11 +58,13 @@ namespace Rollspel
         {
             for (int i = 0; i < height; i++)
             {
+                string line = "";
                 for (int j = 0; j < width; j++)
                 {
-                    Console.SetCursorPosition(x + j, y + i);
-                    Console.Write("*");
+                    line += " ";
                 }
+                Console.SetCursorPosition(x, y + i);
+                Console.Write(line);
             }
         }
     }

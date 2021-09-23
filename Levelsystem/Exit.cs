@@ -49,27 +49,14 @@
                         }
                     }
                     break;
-                case "Test":
-                    open = true;
-                    break;
-
-                case "Trädgård":
-                    open = true;
-                    break;
-
-                case "Väg":
-                    open = true;
-                    break;
-
-                case "Minfält":
-                    open = true;
-                    break;
-
                 case "Labyrint":
                     if (Checkpoint.Counter == 3)
                     {
                         open = true;
                     }
+                    break;
+                default:
+                    open = true;
                     break;
             }
 

@@ -64,7 +64,6 @@ namespace Rollspel
                         Console.WriteLine($"Du kan inte {choices.ElementAt(userChoiceInt - 1).Key.ToLower()} här.");
                         continue;
 
-
                     case Uses.Eat:
                         // Kod för att äta
                         break;
@@ -79,12 +78,8 @@ namespace Rollspel
 
                         stop = true;
 
-
                         break;
-
-
                 }
-
             }
         }
     }

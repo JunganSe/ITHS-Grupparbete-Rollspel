@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Net.NetworkInformation;
-using System.Text;
 
 namespace Rollspel
 {
@@ -22,6 +19,7 @@ namespace Rollspel
 
         public static void PrintInventory()
         {
+            Program.DrawEmpty(AnchorX + 1, AnchorY + 1, Width - 2, Height - 2);
             Program.DrawFrame(AnchorX, AnchorY, Width, Height);
             Console.SetCursorPosition(AnchorX + 5, AnchorY - 1);
             Console.WriteLine("Inventory");
@@ -93,8 +91,8 @@ namespace Rollspel
             Console.WriteLine("Vilken av dina saker vill du hantera? Ange siffra för respektive objekt");
             Console.SetCursorPosition(InteractiveMenu.AnchorX + 1, InteractiveMenu.AnchorY+1); 
             int itemToHandle = int.Parse(Console.ReadLine());
-            Item selectedItem;
 
+            Item selectedItem;
             if (itemToHandle > 0)
             {
 

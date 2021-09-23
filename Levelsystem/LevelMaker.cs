@@ -117,8 +117,8 @@ namespace Rollspel
             lines[13] = @"║                                                          ║";
             lines[14] = @"║                                                    _     ║";
             lines[15] = @"║    .-^-.                                          | |    ║";
-            lines[16] = @"║   ´´'|'``                                      ___| |    ║";
-            lines[17] = @"║      j                                       (    .'     ║";
+            lines[16] = @"║   ´´'|'``                                     ____| |    ║";
+            lines[17] = @"║      j                                       (_   .'     ║";
             lines[18] = @"║                                                )  (      ║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
             //             |        |         |         |         |         |       |
@@ -150,7 +150,7 @@ namespace Rollspel
             lines[03] = @"║           '-Ö----Ö-'           #                         ║";
             lines[04] = @"║                                #                         ║";
             lines[05] = @"║      __                        #                         ║";
-            lines[06] = @"║   ||/  \                       #                         ║";
+            lines[06] = @"║   ||/  \                                                 ║";
             lines[07] = @"║   |/    \                                                ║";
             lines[08] = @"║   /   _  \                                               ║";
             lines[09] = @"║   |  |_| |                     #           ________      ║";
@@ -174,7 +174,7 @@ namespace Rollspel
             activeObjects.Add(new Exit(45, 1));
             activeObjects.Add(new Potatis(6, 13));
             activeObjects.Add(new Potatis(3, 4));
-            activeObjects.Add(new Potatis(40, 12));
+            activeObjects.Add(new Potatis(40, 5));
             activeObjects.Add(new Potatis(48, 17));
             activeObjects.Add(new Potatis(55, 18));
             activeObjects.Add(new LawnMower(20, 10, true));
@@ -289,7 +289,7 @@ namespace Rollspel
             // Se till att antalet tecken per rad stämmer med (LevelHandler.Width), och att antal rader stämmer med (LevelHandler.Height).
 
             name = "Minfält";
-            message = "    Det ligger ett antal minor på detta fält. Korsa det om du kan! :)";
+            message = "    Det ligger ett antal minor på detta fält. Korsa det om du kan! :) -Big Jens";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -321,35 +321,60 @@ namespace Rollspel
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(29, 2));
-            activeObjects.Add(new Boom(10, 16));
-            activeObjects.Add(new Boom(28, 12));
-            activeObjects.Add(new Boom(4, 12));
-            activeObjects.Add(new Boom(10, 12));
-            activeObjects.Add(new Boom(11, 14));
-            activeObjects.Add(new Boom(1, 7));
-            activeObjects.Add(new Boom(45, 12));
-            activeObjects.Add(new Boom(52, 16));
-            activeObjects.Add(new Boom(48, 2));
-            activeObjects.Add(new Boom(41, 17));
-            activeObjects.Add(new Boom(36, 7));
-            activeObjects.Add(new Boom(32, 8));
-            activeObjects.Add(new Boom(30, 9));
-            activeObjects.Add(new Boom(31, 5));
-            activeObjects.Add(new Boom(12, 12));
+            activeObjects.Add(new Boom(10, 2));
+            activeObjects.Add(new Boom(28, 2));
+            activeObjects.Add(new Boom(4, 3));
+            activeObjects.Add(new Boom(10, 4));
+            activeObjects.Add(new Boom(11, 5));
+            activeObjects.Add(new Boom(1, 6));
+            activeObjects.Add(new Boom(45, 7));
+            activeObjects.Add(new Boom(52, 8));
+            activeObjects.Add(new Boom(48, 9));
+            activeObjects.Add(new Boom(41, 10));
+            activeObjects.Add(new Boom(36, 11));
+            activeObjects.Add(new Boom(32, 12));
+            activeObjects.Add(new Boom(30, 13));
+            activeObjects.Add(new Boom(31, 14));
+            activeObjects.Add(new Boom(12, 15));
             activeObjects.Add(new Boom(32, 16));
-            activeObjects.Add(new Boom(42, 4));
-            activeObjects.Add(new Boom(47, 10));
-            activeObjects.Add(new Boom(16, 10));
-            activeObjects.Add(new Boom(15, 9));
-            activeObjects.Add(new Boom(18, 11));
-            activeObjects.Add(new Boom(3, 16));
+            activeObjects.Add(new Boom(42, 17));
+            activeObjects.Add(new Boom(47, 12));
+            activeObjects.Add(new Boom(16, 17));
+            activeObjects.Add(new Boom(15, 16));
+            activeObjects.Add(new Boom(18, 15));
+            activeObjects.Add(new Boom(3, 14));
             activeObjects.Add(new Boom(6, 17));
-            activeObjects.Add(new Boom(8, 9));
-            activeObjects.Add(new Boom(10, 11));
-            activeObjects.Add(new Boom(14, 8));
-            activeObjects.Add(new Boom(25, 6));
-            activeObjects.Add(new Boom(27, 4));
-            activeObjects.Add(new Boom(28, 3));
+            activeObjects.Add(new Boom(8, 13));
+            activeObjects.Add(new Boom(10, 12));
+            activeObjects.Add(new Boom(14, 11));
+            activeObjects.Add(new Boom(25, 10));
+            activeObjects.Add(new Boom(27, 9));
+            activeObjects.Add(new Boom(28, 8)); 
+            activeObjects.Add(new Boom(22, 16));
+            activeObjects.Add(new Boom(23, 17));
+            activeObjects.Add(new Boom(24, 2));
+            activeObjects.Add(new Boom(25, 5));
+            activeObjects.Add(new Boom(26, 4));
+            activeObjects.Add(new Boom(27, 15));
+            activeObjects.Add(new Boom(28, 14));
+            activeObjects.Add(new Boom(12, 2));
+            activeObjects.Add(new Boom(30, 13));
+            activeObjects.Add(new Boom(31, 3));
+            activeObjects.Add(new Boom(32, 7));
+            activeObjects.Add(new Boom(33, 9));
+            activeObjects.Add(new Boom(37, 9));
+            activeObjects.Add(new Boom(43, 8));
+            activeObjects.Add(new Boom(33, 5));
+            activeObjects.Add(new Boom(34, 4));
+            activeObjects.Add(new Boom(36, 3));
+            activeObjects.Add(new Boom(45, 7));
+            activeObjects.Add(new Boom(46, 6));
+            activeObjects.Add(new Boom(47, 9));
+            activeObjects.Add(new Boom(49, 8));
+            activeObjects.Add(new Boom(52, 10));
+            activeObjects.Add(new Boom(53, 12));
+            activeObjects.Add(new Boom(54, 3));
+            activeObjects.Add(new Boom(55, 15));
 
         }
         public static void Ending(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
@@ -399,7 +424,7 @@ namespace Rollspel
             startY = 15; 
 
             activeObjects = new List<IActiveObject>();
-            activeObjects.Add(new Exit(1, 1));
+            activeObjects.Add(new Exit(45, 18));
         }
 
 
