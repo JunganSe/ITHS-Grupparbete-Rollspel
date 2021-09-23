@@ -218,7 +218,7 @@ namespace Rollspel
             //             1        10        20        30        40        50      58
 
             startX = 29;
-            startY = 18;
+            startY = 4;
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(29, 1));
@@ -250,8 +250,8 @@ namespace Rollspel
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
             lines[01] = @"║##########################################################║";
-            lines[02] = @"║       ### ######                 ##############     #####║";
-            lines[03] = @"║###### ##    #### ############### ########       ### #####║";
+            lines[02] = @"║       ### ##                     ##############     #####║";
+            lines[03] = @"║###### ##     ### ############### ########       ### #####║";
             lines[04] = @"║###### ## ## ####       ######### ######## ######### ###  ║";
             lines[05] = @"║###### ##### ########## ######### ##### ## #########     #║";
             lines[06] = @"║###### ###      ####### ######### ##### ## ########## ####║";
@@ -289,7 +289,7 @@ namespace Rollspel
             // Se till att antalet tecken per rad stämmer med (LevelHandler.Width), och att antal rader stämmer med (LevelHandler.Height).
 
             name = "Minfält";
-            message = "    Det ligger ett antal minor på detta fält. Korsa det om du kan! :) -Big Jens";
+            message = "     Det ligger ett antal minor på detta fält. Korsa det om du kan! :) -Big Jens";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
@@ -316,7 +316,7 @@ namespace Rollspel
             //             1        10        20        30        40        50      58
 
             startX = 29;
-            startY = 18;
+            startY = 17;
 
 
             activeObjects = new List<IActiveObject>();

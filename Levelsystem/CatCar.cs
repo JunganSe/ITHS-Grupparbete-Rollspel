@@ -39,7 +39,6 @@ namespace Rollspel
         {
             for (int i = 0; i < Math.Abs(Speed); i++)
             {
-                CheckPlayerKill();
                 if (X < 2)
                 {
                     X = LevelHandler.Width - 3;
@@ -52,6 +51,7 @@ namespace Rollspel
                 {
                     X += Math.Sign(Speed);
                 }
+                CheckPlayerKill();
             }
         }
 

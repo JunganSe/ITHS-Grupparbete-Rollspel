@@ -7,10 +7,11 @@ namespace Rollspel
         public static bool quit = false;
         private static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+            Console.SetWindowSize(87, 45);
 
             Inventory.PrintInventory();
 
-            Console.CursorVisible = false;
 
             LevelHandler.Initialize();
             while (!quit)
