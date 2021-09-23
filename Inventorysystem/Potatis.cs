@@ -10,9 +10,9 @@ namespace Rollspel
         private int startX;
         private int startY;
         private char symbol = 'O';
-        private char symbolInvisible = ' ';
 
         public override char Symbol { get; set; }
+        public override char SymbolInvisible { get; set; } = ' ';
         public override int X { get; set; }
         public override int Y { get; set; }
         public override string Name { get; set; } = "Potatis";
@@ -27,6 +27,7 @@ namespace Rollspel
 
         public override void Use()
         {
+            Console.SetCursorPosition(InteractiveMenu.AnchorX+1, InteractiveMenu.AnchorY + 6);
             Console.WriteLine("Tryck på piltangenterna för att välja riktning");
             bool canPlace = false;
             while (!canPlace)
@@ -40,6 +41,7 @@ namespace Rollspel
                             X = Player.X;
                             Y = Player.Y - 1;
                             Symbol = symbol;
+
                         }
                         else
                         {
@@ -94,6 +96,8 @@ namespace Rollspel
                         return;
                 }
             }
+            Program.DrawEmpty(InteractiveMenu.AnchorX, InteractiveMenu.AnchorY, InteractiveMenu.MenuWidth - 2, InteractiveMenu.MenuHeight - 2);
+            LevelHandler.DrawLevel(LevelHandler.CurrentLevel);
         }
 
         public override void Reset()
@@ -116,7 +120,7 @@ namespace Rollspel
         {
             Inventory.AddToInventory(this);
             InInventory = true;
-            Symbol = symbolInvisible;
+            Symbol = SymbolInvisible;
         }
 
         private bool CheckFree(int x, int y)

@@ -12,6 +12,7 @@ namespace Rollspel
         private char symbolTaken = 'x';
 
         public char Symbol { get; set; }
+        public char SymbolInvisible { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 

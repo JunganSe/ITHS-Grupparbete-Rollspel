@@ -82,8 +82,9 @@ namespace Rollspel
 
         public static void UseInventoryItem()
         {
-            Console.SetCursorPosition(InteractiveMenu.AnchorX, InteractiveMenu.AnchorY - 1);
+            Console.SetCursorPosition(InteractiveMenu.AnchorX+1, InteractiveMenu.AnchorY);
             Console.WriteLine("Vilken av dina saker vill du hantera? Ange siffra för respektive objekt");
+            Console.SetCursorPosition(InteractiveMenu.AnchorX + 1, InteractiveMenu.AnchorY+1); 
             int itemToHandle = int.Parse(Console.ReadLine());
             Item selectedItem;
 
@@ -95,7 +96,9 @@ namespace Rollspel
 
                 if (selectedItem.Name == "Potatis")
                 {
+                    Console.SetCursorPosition(InteractiveMenu.AnchorX + 1, InteractiveMenu.AnchorY + 2);
                     InteractiveMenu potatisMeny = new InteractiveMenu("Vad vill du göra med potatisen?", InteractiveMenu.Uses.Kick);
+                    Console.SetCursorPosition(InteractiveMenu.AnchorX + 1, InteractiveMenu.AnchorY + 3);
                     Console.WriteLine("Välj siffra för det alternativ du vill ha");
                     var dictionary = new Dictionary<string, InteractiveMenu.Uses> { { "Lägga ut den", InteractiveMenu.Uses.Kick } };
                     potatisMeny.PrintChoices(dictionary, selectedItem);

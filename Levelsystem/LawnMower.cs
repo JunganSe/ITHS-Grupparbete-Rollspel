@@ -11,6 +11,7 @@ namespace Rollspel
         private int nextMove;
 
         public char Symbol { get; set; } = 'G';
+        public char SymbolInvisible { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public bool Horizontal { get; set; }
@@ -42,11 +43,11 @@ namespace Rollspel
         {
             if (nextMove != 0)
             {
-                if (Horizontal)
+                if ((Horizontal) && (CheckFree(X + nextMove, Y)))
                 {
                     X += nextMove;
                 }
-                else
+                else if ((!Horizontal) && (CheckFree(X, Y + nextMove)))
                 {
                     Y += nextMove;
                 }
@@ -78,10 +79,18 @@ namespace Rollspel
         // Troligtvis temporär, bättre att använda en universell metod.
         private bool CheckFree(int x, int y)
         {
+            foreach (var item in LevelHandler.CurrentLevel.ActiveObjects)
+            {
+                if ((item.X == x) && (item.Y == y) && (item.Symbol != item.SymbolInvisible)) 
+                { 
+                    return false;  
+                }
+            }
             if (LevelHandler.CurrentLevel.Layout[x, y] == ' ')
             {
                 return true;
             }
+
             return false;
         }
     }

@@ -10,6 +10,7 @@ namespace Rollspel
         private int startY;
 
         public char Symbol { get; set; } = 'K';
+        public char SymbolInvisible { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int Speed { get; set; } // Positivt = höger, negativt = vänster.

@@ -8,6 +8,7 @@ namespace Rollspel
     public abstract class Item : IActiveObject
     {
         public abstract char Symbol { get; set; }
+        public abstract char SymbolInvisible { get; set; }
         public abstract int X { get; set; }
         public abstract int Y { get; set; }
         public abstract string Name { get; set; }

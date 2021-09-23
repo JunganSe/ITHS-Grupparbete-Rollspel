@@ -15,7 +15,6 @@ namespace Rollspel
         private static void Main(string[] args)
         {
 
-
             Inventory.PrintInventory();
 
             // Console.CursorVisible = false;
@@ -25,7 +24,7 @@ namespace Rollspel
             while (true)
             {
                 Player.GetInput();
-                LevelHandler.Step(); // TODO: Gör så att denna bara körs om spelaren flyttar sig.
+                //LevelHandler.Step(); // TODO: Gör så att denna bara körs om spelaren flyttar sig.
             }
 
 
@@ -62,6 +61,18 @@ namespace Rollspel
             line += cornerBR;
             Console.SetCursorPosition(x, y + height - 1);
             Console.Write(line);
+        }
+
+        public static void DrawEmpty(int x, int y, int width, int height)
+        {
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.SetCursorPosition(x + j, y + i);
+                    Console.Write(" ");
+                }
+            }
         }
     }
 }

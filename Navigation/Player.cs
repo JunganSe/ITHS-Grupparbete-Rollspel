@@ -57,6 +57,9 @@ namespace Rollspel
                     case ConsoleKey.Spacebar:
                         Inventory.UseInventoryItem();
                         return;
+                case ConsoleKey.N: // Temporär för utveckling.
+                        LevelHandler.NextLevel();
+                    break;
 
                 }
                 // waits until keys are available again before leaving the method
@@ -99,17 +102,18 @@ namespace Rollspel
             X = newX;
             Y = newY;
             LevelHandler.CurrentLevel.Steps++;
+            LevelHandler.Step();
         }
 
         public static void Kill()
         {
             // TODO: Någon visuell effekt?
             // Kod som körs när spelaren dör.
-            Console.SetCursorPosition(LevelHandler.AnchorX + LevelHandler.Width - 7, LevelHandler.AnchorY - 0); // Temp
-            Console.WriteLine("Du dog!");                       //
-            Thread.Sleep(500);                                  //
-            Console.SetCursorPosition(LevelHandler.AnchorX, 0); //
-            Console.WriteLine("       ");                       //
+            Console.SetCursorPosition(LevelHandler.AnchorX + LevelHandler.Width - 7, LevelHandler.AnchorY - 0);
+            Console.WriteLine("Du dog!");
+            Thread.Sleep(500);
+            Console.SetCursorPosition(LevelHandler.AnchorX, 0);
+            Console.WriteLine("       ");
 
             LevelHandler.Restart();
         }

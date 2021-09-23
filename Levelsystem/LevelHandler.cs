@@ -36,7 +36,7 @@ namespace Rollspel
             LevelMaker.Minor(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[4]; // Sätt första banan som startbana.
+            CurrentLevel = Levels[0]; // Sätt första banan som startbana.
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
@@ -62,6 +62,7 @@ namespace Rollspel
         {
             Player.X = CurrentLevel.StartX;
             Player.Y = CurrentLevel.StartY;
+            Program.DrawFrame(InteractiveMenu.AnchorX - 1, InteractiveMenu.AnchorY - 1, InteractiveMenu.MenuWidth, InteractiveMenu.MenuHeight);
             foreach (var item in CurrentLevel.ActiveObjects)
             {
                 item.Reset();
@@ -115,7 +116,7 @@ namespace Rollspel
         // Ritar banan.
         // Utvecklingsmetod, bör uppdateras för slutprodukten.
         // anchorX och anchorY är var på skärmen det ska ritas.
-        private static void DrawLevel(Level level)
+        public static void DrawLevel(Level level)
         {
             // Rita banan.
             for (int y = 0; y < Height; y++)

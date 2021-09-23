@@ -16,7 +16,9 @@ namespace Rollspel
         }
 
         public static int AnchorX { get; set; } = 3;
-        public static int AnchorY { get; set; } = 25;
+        public static int AnchorY { get; set; } = 27;
+        public static int MenuWidth { get; set; } = 80;
+        public static int MenuHeight { get; set; } = 15;
         public string Message { get; set; }
         public Uses Do { get; set; }
 
@@ -35,11 +37,12 @@ namespace Rollspel
                 foreach (var item in choices)
                 {
                     counter++;
-                    Console.SetCursorPosition(AnchorX, AnchorY);
+                    Console.SetCursorPosition(AnchorX+1, AnchorY+4);
                     Console.WriteLine(counter + ". " + item.Key);
                 }
 
                 Regex rx = new Regex(@"[1-3]");
+                Console.SetCursorPosition(AnchorX+1, AnchorY + 5);
                 string userChoice = Console.ReadLine();
                 bool isNumber = rx.IsMatch(userChoice);
                 int userChoiceInt = 0;

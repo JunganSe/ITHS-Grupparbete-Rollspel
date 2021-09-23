@@ -7,9 +7,8 @@ namespace Rollspel
 {
     public class Boom : IActiveObject
     {
-        private char symbol = '*';
-
-        public char Symbol { get; set; }
+        public char Symbol { get; set; } = '*';
+        public char SymbolInvisible { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
@@ -22,15 +21,12 @@ namespace Rollspel
 
         public void Reset()
         {
-            Symbol = symbol;
-
         }
 
         public void Step()
         {
             CheckPlayerKill();
         }
-
 
         private void CheckPlayerKill()
         {
@@ -39,8 +35,5 @@ namespace Rollspel
                 Player.Kill();
             }
         }
-
-
-
     }
 }

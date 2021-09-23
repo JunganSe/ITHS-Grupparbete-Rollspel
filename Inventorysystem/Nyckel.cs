@@ -12,6 +12,7 @@ namespace Rollspel
         private char symbolInvisible = ' ';
 
         public override char Symbol { get; set; }
+        public override char SymbolInvisible { get; set; }
         public override int X { get; set; }
         public override int Y { get; set; }
         public override string Name { get; set; } = "Nyckel";

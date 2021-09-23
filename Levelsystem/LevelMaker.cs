@@ -132,11 +132,12 @@ namespace Rollspel
             activeObjects.Add(new Potatis(40, 12));
             activeObjects.Add(new Potatis(48, 17));
             activeObjects.Add(new Potatis(55, 18));
-            activeObjects.Add(new LawnMower(28, 10, true));
-            activeObjects.Add(new LawnMower(35, 17, false));
+            activeObjects.Add(new Potatis(22, 10));
+            activeObjects.Add(new LawnMower(20, 10, true));
+            activeObjects.Add(new LawnMower(34, 8, false));
             activeObjects.Add(new LawnMower(57, 3, true));
             activeObjects.Add(new LawnMower(50, 4, true));
-            activeObjects.Add(new LawnMower(42, 16, true));
+            activeObjects.Add(new LawnMower(45, 16, true));
         }
 
         public static void Road(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
