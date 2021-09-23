@@ -201,11 +201,11 @@ namespace Rollspel
             lines[15] = @"║               |                . m       m .             ║";
             lines[16] = @"║               |              m       m       m           ║";
             lines[17] = @"║               |                  m       m               ║";
-            lines[18] = @"║  //start      |                      m                   ║";
+            lines[18] = @"║               |                      m                   ║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
 
-            startX = 5;
-            startY = 10;
+            startX = 1;
+            startY = 19;
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(1, 1));
