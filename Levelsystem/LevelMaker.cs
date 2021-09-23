@@ -45,91 +45,112 @@ namespace Rollspel
             activeObjects.Add(new Exit(1, 1));
         }
 
-        public static void Test(out string name, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        //public static void Test(out string name, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
+        //{
+        //    name = "Labyrinten";
+
+        //    lines = new string[LevelHandler.Height];
+        //    lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+        //    lines[01] = @"║##########################################################║";
+        //    lines[02] = @"║       ### ######                 ##############     #####║";
+        //    lines[03] = @"║###### ##    #### ############### ########       ### #####║";
+        //    lines[04] = @"║###### ## ## ####       ######### ######## ######### ###  ║";
+        //    lines[05] = @"║###### ##### ########## ######### ##### ## #########     #║";
+        //    lines[06] = @"║###### ###      ####### ######### ##### ## ########## ####║";
+        //    lines[07] = @"║###### ### #### ####### ######### ##### ## ########## ####║";
+        //    lines[08] = @"║###### ######## #####         ###       ##       #### ####║";
+        //    lines[09] = @"║######             ##         ############# ####      ####║";
+        //    lines[10] = @"║################## ##         ############# #### #########║";
+        //    lines[11] = @"║################## ###### #################    # #########║";
+        //    lines[12] = @"║###           #### ######               ###### # #########║";
+        //    lines[13] = @"║### ######### #### ####################             ######║";
+        //    lines[14] = @"║### #########      #################### ##### ##### ######║";
+        //    lines[15] = @"║### ############## #################### ##### #####       ║";
+        //    lines[16] = @"║###         ######                      ##### ############║";
+        //    lines[17] = @"║########### #################################          ###║";
+        //    lines[18] = @"║########### ##############################################║";
+        //    lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+
+
+        //    //Mallen
+
+        //    //lines[00] = @"╔══════════════════════════════════════════════════════════╗";
+        //    //lines[01] = @"║                                                          ║";
+        //    //lines[02] = @"║                                                          ║";
+        //    //lines[03] = @"║                                                          ║";
+        //    //lines[04] = @"║                                                          ║";
+        //    //lines[05] = @"║                                                          ║";
+        //    //lines[06] = @"║                                                          ║";
+        //    //lines[07] = @"║                                                          ║";
+        //    //lines[08] = @"║                                                          ║";
+        //    //lines[09] = @"║                                                          ║";
+        //    //lines[10] = @"║                                                          ║";
+        //    //lines[11] = @"║                                                          ║";
+        //    //lines[12] = @"║                                                          ║";
+        //    //lines[13] = @"║                                                          ║";
+        //    //lines[14] = @"║                                                          ║";
+        //    //lines[15] = @"║                                                          ║";
+        //    //lines[16] = @"║                                                          ║";
+        //    //lines[17] = @"║                                                          ║";
+        //    //lines[18] = @"║                                                          ║";
+        //    //lines[19] = @"╚══════════════════════════════════════════════════════════╝";
+
+
+
+        //    startX = 26;  // Spelarens startposition
+        //    startY = 10;  //
+
+        //    activeObjects = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
+        //    activeObjects.Add(new Checkpoint(59, 4));
+        //    activeObjects.Add(new Checkpoint(59, 15));
+        //    activeObjects.Add(new Checkpoint(0, 2));
+        //    activeObjects.Add(new Exit(25, 9));
+
+        //}
+
+        public static void NyTest(out string name, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Labyrinten";
 
+
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
-            lines[01] = @"║##########################################################║";
-            lines[02] = @"║       ### ######                 ##############     #####║";
-            lines[03] = @"║###### ##    #### ############### ########       ### #####║";
-            lines[04] = @"║###### ## ## ####       ######### ######## ######### ###  ║";
-            lines[05] = @"║###### ##### ########## ######### ##### ## #########     #║";
-            lines[06] = @"║###### ###      ####### ######### ##### ## ########## ####║";
-            lines[07] = @"║###### ### #### ####### ######### ##### ## ########## ####║";
-            lines[08] = @"║###### ######## #####         ###       ##       #### ####║";
-            lines[09] = @"║######             ##         ############# ####      ####║";
-            lines[10] = @"║################## ##         ############# #### #########║";
-            lines[11] = @"║################## ###### #################    # #########║";
-            lines[12] = @"║###           #### ######               ###### # #########║";
-            lines[13] = @"║### ######### #### ####################             ######║";
-            lines[14] = @"║### #########      #################### ##### ##### ######║";
-            lines[15] = @"║### ############## #################### ##### #####       ║";
-            lines[16] = @"║###         ######                      ##### ############║";
-            lines[17] = @"║########### #################################          ###║";
-            lines[18] = @"║########### ##############################################║";
+            lines[01] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[02] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[03] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[04] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[05] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[06] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[07] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[08] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[09] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[10] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[11] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[12] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[13] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[14] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[15] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[16] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[17] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
+            lines[18] = @"║xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx║";
             lines[19] = @"╚══════════════════════════════════════════════════════════╝";
 
-            // "Samla 3 poäng genom att ringa på dörrklockorna. Låt bli att gå in i väggarna, och undvik att gå vilse!"
 
-
-            //Mallen
-
-            //lines[00] = @"╔══════════════════════════════════════════════════════════╗";
-            //lines[01] = @"║                                                          ║";
-            //lines[02] = @"║                                                          ║";
-            //lines[03] = @"║                                                          ║";
-            //lines[04] = @"║                                                          ║";
-            //lines[05] = @"║                                                          ║";
-            //lines[06] = @"║                                                          ║";
-            //lines[07] = @"║                                                          ║";
-            //lines[08] = @"║                                                          ║";
-            //lines[09] = @"║                                                          ║";
-            //lines[10] = @"║                                                          ║";
-            //lines[11] = @"║                                                          ║";
-            //lines[12] = @"║                                                          ║";
-            //lines[13] = @"║                                                          ║";
-            //lines[14] = @"║                                                          ║";
-            //lines[15] = @"║                                                          ║";
-            //lines[16] = @"║                                                          ║";
-            //lines[17] = @"║                                                          ║";
-            //lines[18] = @"║                                                          ║";
-            //lines[19] = @"╚══════════════════════════════════════════════════════════╝";
-
-
-            //Har lagt kartan med bara själva gången nedan, ifall den skulle behövas!
-
-            //lines[00] = @"+----------------------------------------------------------+";
-            //lines[01] = @"¦##########################################################¦";
-            //lines[02] = @"¦       #########################################     #####¦";
-            //lines[03] = @"¦###### ###################################       ### #####¦";
-            //lines[04] = @"¦###### ################################### ######### ###  ¦";
-            //lines[05] = @"¦###### ################################### #########     #¦";
-            //lines[06] = @"¦###### ################################### ###############¦";
-            //lines[07] = @"¦###### ##############         ############ ###############¦";
-            //lines[08] = @"¦###### ##############         ############       #########¦";
-            //lines[09] = @"¦######             ##         ################## #########¦";
-            //lines[10] = @"¦################## ##         ################## #########¦";
-            //lines[11] = @"¦################## ###### ###################### #########¦";
-            //lines[12] = @"¦################## ######               ######## #########¦";
-            //lines[13] = @"¦################## ####################             ######¦";
-            //lines[14] = @"¦################## #################### ########### ######¦";
-            //lines[15] = @"¦################## #################### ###########       ¦";
-            //lines[16] = @"¦##################                      ##################¦";
-            //lines[17] = @"¦##########################################################¦";
-            //lines[18] = @"¦##########################################################¦";
-            //lines[19] = @"+----------------------------------------------------------+";
 
             startX = 26;  // Spelarens startposition
             startY = 10;  //
 
             activeObjects = new List<IActiveObject>(); // Lista med objekt som kör egen kod (på denna bana).
-            activeObjects.Add(new Checkpoint(59, 4));
-            activeObjects.Add(new Checkpoint(59, 15));
-            activeObjects.Add(new Checkpoint(0, 2));
+            activeObjects.Add(new Boom(45, 4));
+            activeObjects.Add(new Boom(42, 15));
+            activeObjects.Add(new Boom(4, 12));
             activeObjects.Add(new Exit(25, 9));
 
         }
+
+
+
+
     }
 }

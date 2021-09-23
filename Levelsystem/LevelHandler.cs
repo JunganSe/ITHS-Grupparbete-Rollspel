@@ -19,7 +19,7 @@ namespace Rollspel
             string[] lines;
             int startX, startY;
 
-            LevelMaker.Test(out name, out lines, out startX, out startY, out List<IActiveObject> activeObjects); // Skapa data utfrån LevelMaker.
+            LevelMaker.NyTest(out name, out lines, out startX, out startY, out List<IActiveObject> activeObjects); // Skapa data utfrån LevelMaker.
             CurrentLevel = CreateLevel(name, lines, startX, startY, activeObjects); // Skickar datan in i en ny bana.
 
             DrawLevel(CurrentLevel, 25, 0); // Temporär
