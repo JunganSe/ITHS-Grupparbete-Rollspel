@@ -218,7 +218,7 @@ namespace Rollspel
             //             1        10        20        30        40        50      58
 
             startX = 29;
-            startY = 4;
+            startY = 17;
 
             activeObjects = new List<IActiveObject>();
             activeObjects.Add(new Exit(29, 1));

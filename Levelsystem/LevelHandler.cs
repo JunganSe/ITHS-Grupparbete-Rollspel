@@ -43,7 +43,7 @@ namespace Rollspel
             LevelMaker.Ending(out name, out message, out lines, out startX, out startY, out activeObjects);
             CreateLevel(name, message, lines, startX, startY, activeObjects);
 
-            CurrentLevel = Levels[3]; // Sätt första banan som startbana.
+            CurrentLevel = Levels[1]; // Sätt första banan som startbana.
             Restart();
             DrawLevel(CurrentLevel); // För att undvika tom skärm innan man rört sig första gången.
         }
