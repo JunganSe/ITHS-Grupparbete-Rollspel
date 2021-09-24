@@ -244,8 +244,9 @@ namespace Rollspel
         public static void Labyrint(out string name, out string message, out string[] lines, out int startX, out int startY, out List<IActiveObject> activeObjects)
         {
             name = "Labyrint";
-            message = "     Samla 3 poäng genom att ringa på dörrklockorna, och gå sen till utgången.\n" +
-                "     Låt bli att gå in i väggarna, och undvik att gå vilse!";
+            message = "     Du vet inte hur du hamnade mitt i en labyrint, men det är nog bara\n" +
+                "     en manusgrej. Det känns i alla fall på lukten att det finns tre ringklockor\n" +
+                "     i närheten. De måste väl ha någon betydelse?";
 
             lines = new string[LevelHandler.Height];
             lines[00] = @"╔══════════════════════════════════════════════════════════╗";
